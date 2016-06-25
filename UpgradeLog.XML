@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Backup">
+</Property><Property Name="Solution File" Value="D:\data\PROJECT\C#\Backup\Backup.sln">
+</Property><Property Name="User Options File" Value="D:\data\PROJECT\C#\Backup\Backup.suo">
+</Property><Property Name="Date" Value="Mittwoch, 2. August 2006">
+</Property><Property Name="Time" Value="17:38">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Backup.sln" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Backup.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Backup.suo" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Backup.suo">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Project file successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Backup.csproj">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj.user" Description="Project user file successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Backup.csproj.user">
+</Event><Event ErrorLevel="0" Project="Backup" Source="About.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\About.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="AssemblyInfo.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Backup.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Favorites.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Favorites.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Form.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Form.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FormFmEditor.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\FormFmEditor.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Preferences.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Preferences.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ProtocolView.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\ProtocolView.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="App.ico" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\App.ico">
+</Event><Event ErrorLevel="0" Project="Backup" Source="About.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\About.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Form.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Form.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FormFmEditor.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\FormFmEditor.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Preferences.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Preferences.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ProtocolView.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\ProtocolView.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Backup" Source="Backup.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Setup.vdproj" Source="Setup\Setup.vdproj" Description="Project file successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Setup\Setup.vdproj">
+</Event><Event ErrorLevel="1" Project="Shared" Source="..\Shared\Shared.csproj" Description="Warning: The project file is being backed up to a relative path that differs from the original solution relative path.  The difference in folder hierarchy may create problems in opening or building the backed up solution and project.">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\Shared.csproj" Description="Project file successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\Shared.csproj">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\Shared.csproj.user" Description="Project user file successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\Shared.csproj.user">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\AppSettings.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\AppSettings.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\FileComboBox.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\FileComboBox.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\UserComboBox.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\UserComboBox.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\Utils.cs" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\Utils.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\FileComboBox.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\FileComboBox.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\UserComboBox.resx" Description="File successfully backed up as D:\data\PROJECT\C#\Backup\Backup\Shared\UserComboBox.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\Shared\Shared.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="Shared" Source="..\Shared\Shared.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="Backup.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Backup.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Setup.vdproj" Source="Setup\Setup.vdproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Setup.vdproj" Source="Setup\Setup.vdproj" Description="Converted">
+</Event></UpgradeLog>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Backup">
+</Property><Property Name="Projektmappendatei" Value="D:\data\PROJECT\CS\Backup\Backup.sln">
+</Property><Property Name="Benutzeroptionendatei" Value="D:\data\PROJECT\CS\Backup\Backup.suo">
+</Property><Property Name="Date" Value="Sonntag, 9. November 2014">
+</Property><Property Name="Time" Value="19:47">
+</Property><Property Name="Protokollnummer" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Backup.sln" Description="Datei wurde erfolgreich als &quot;D:\data\PROJECT\CS\Backup\Backup\Backup.sln&quot; gesichert">
+</Event><Event ErrorLevel="0" Project="" Source="Backup.suo" Description="Datei wurde erfolgreich als &quot;D:\data\PROJECT\CS\Backup\Backup\Backup.suo&quot; gesichert">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Projektdatei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Backup.csproj">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj.user" Description="Die Projektbenutzerdatei wurde erfolgreich als &quot;D:\data\PROJECT\CS\Backup\Backup\Backup.csproj.user&quot; gesichert.">
+</Event><Event ErrorLevel="0" Project="Backup" Source="About.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\About.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="AssemblyInfo.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Backup.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FavDescriptionEditor.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\FavDescriptionEditor.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FavDescriptionEditor.Designer.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\FavDescriptionEditor.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Favorites.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Favorites.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Form.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Form.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FormFmEditor.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\FormFmEditor.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Preferences.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Preferences.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ProtocolView.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\ProtocolView.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ReplaceDL.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\ReplaceDL.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ReplaceDL.Designer.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\ReplaceDL.Designer.cs">
+</Event><Event ErrorLevel="0" Project="Backup" Source="App.ico" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\App.ico">
+</Event><Event ErrorLevel="0" Project="Backup" Source="About.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\About.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FavDescriptionEditor.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\FavDescriptionEditor.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Form.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Form.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="FormFmEditor.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\FormFmEditor.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Preferences.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Preferences.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ProtocolView.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\ProtocolView.resx">
+</Event><Event ErrorLevel="0" Project="Backup" Source="ReplaceDL.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\ReplaceDL.resx">
+</Event><Event ErrorLevel="1" Project="Backup" Source="Backup.csproj" Description="Das Projekt ist für .NET Framework 2.0 oder 3.0 konzipiert. Wenn für das Projekt Assemblys verwendet werden, die eine neuere Version von .NET Framework erfordern, kann das Projekt nicht erstellt werden. Die .NET Framework-Version kann durch Klicken auf &quot;Eigenschaften&quot; im Projektmenü und durch anschließendes Auswählen einer neuen Version im Dropdownfeld &quot;.NET Framework&quot; geändert werden. (In Visual Basic befindet sich dieses Feld auf der Registerkarte &quot;Kompilieren&quot;. Klicken Sie auf die Schaltfläche &quot;Erweiterte Compileroptionen...&quot;.)">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Projekt erfolgreich konvertiert">
+</Event><Event ErrorLevel="3" Project="Backup" Source="Backup.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Setup.vdproj" Source="Setup\Setup.vdproj" Description="Die Projektdatei wurde erfolgreich gesichert als &quot;D:\data\PROJECT\CS\Backup\Backup\Setup\Setup.vdproj&quot;.">
+</Event><Event ErrorLevel="1" Project="Shared" Source="..\shared\Shared.csproj" Description="Warnung: Die Sicherungskopie der Projektdatei wird in einem relativen Pfad erstellt, der vom relativen Pfad der ursprünglichen Projektmappe abweicht. Der Unterschied in der Ordnerhierarchie kann zu Problemen beim Öffnen oder Erstellen der gesicherten Projektm">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\Shared.csproj" Description="Projektdatei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\Shared.csproj">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\AppSettings.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\AppSettings.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\AppSettingsXML.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\AppSettingsXML.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\FileComboBox.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\FileComboBox.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\TabControlEx.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\TabControlEx.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserSocket.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserSocket.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserTabControl.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserTabControl.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserTextEditor.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserTextEditor.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserComboBox.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserComboBox.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserFileListView.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserFileListView.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserListView.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserListView.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserMenu.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserMenu.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserTimer.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserTimer.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\Utils.cs" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\Utils.cs">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\FileComboBox.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\FileComboBox.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\TabControlEx.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\TabControlEx.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserTextEditor.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserTextEditor.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\UserComboBox.resx" Description="Datei erfolgreich gesichert als D:\data\PROJECT\CS\Backup\Backup\Shared\UserComboBox.resx">
+</Event><Event ErrorLevel="0" Project="Shared" Source="..\shared\Shared.csproj" Description="Die Projektdatei erfordert keine Konvertierung.">
+</Event><Event ErrorLevel="3" Project="Shared" Source="..\shared\Shared.csproj" Description="Keine Konvertierung erforderlich">
+</Event><Event ErrorLevel="0" Project="" Source="Backup.sln" Description="Die Projektmappe wurde erfolgreich konvertiert.">
+</Event><Event ErrorLevel="3" Project="" Source="Backup.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Backup" Source="Backup.csproj" Description="Überprüfung abgeschlossen: Upgrade der Projektdateien nicht erforderlich.">
+</Event></UpgradeLog>
