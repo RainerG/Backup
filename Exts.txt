@@ -1,11 +1,13 @@
 !~*.*
-!test.txt
-!GD_Files
 !bin
+!GD_Files
 !obj
 !Sandboxes
+!test.txt
+#.git
 *.7z
 *.abc
+*.apx
 *.asax
 *.asm
 *.asp*
@@ -66,6 +68,7 @@
 *.jpg
 *.jpr
 *.kcc
+*.label
 *.lbr
 *.ld
 *.ldf
@@ -111,6 +114,7 @@
 *.scc
 *.sch
 *.scr
+*.settings
 *.sln
 *.snippet
 *.spm
@@ -127,7 +131,9 @@
 *.txt
 *.uir
 *.url
+*.vb
 *.vbp
+*.vbproj
 *.vbs
 *.vbw
 *.vcmd
@@ -160,15 +166,6 @@ Nrt_Tra.*
 pdrem.lib
 preferences.
 Z21Default.*
-
-
-*.settings
-*.label
-*.apx
-
-
-
-
 
 
 
