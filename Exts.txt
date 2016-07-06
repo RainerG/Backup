@@ -9,6 +9,7 @@
 *.abc
 *.apx
 *.asax
+*.asc
 *.asm
 *.asp*
 *.au
@@ -166,6 +167,4 @@ Nrt_Tra.*
 pdrem.lib
 preferences.
 Z21Default.*
-
-
 

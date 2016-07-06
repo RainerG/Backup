@@ -529,6 +529,8 @@ namespace NS_Backup
                         sFiles = new string[1];
                         sFiles[0] = a_PT.path;
                     }
+
+                    if (! TraverseFiles( sFiles, sNewPath, bIsDir ) ) return false;
                 }
                 else
                 {
@@ -545,24 +547,11 @@ namespace NS_Backup
                             sFiles = new string[1];
                             sFiles[0] = a_PT.path;
                         }
+
+                        if ( ! TraverseFiles( sFiles, sNewPath, bIsDir ) ) return false;
                     }
                 }
 
-                for (int i=0; i<sFiles.Length; i++)
-                {
-                    string sFile = sFiles[i];
-
-                    m_IncMutex.WaitOne();
-                    int iNrFiles = m_iNrFiles;
-                    m_IncMutex.ReleaseMutex();
-
-                    if( !m_bSkipCount && null != m_eShowABar && 0 != iNrFiles ) 
-                    {
-                        m_eShowABar( m_iCurrNrFiles++, iNrFiles );
-                    }
-
-                    if (! CopyPath( sFile, sNewPath, bIsDir, ref i ) ) return false;
-                }
 
                 foreach (string sDir in sDirs)
                 {
@@ -691,6 +680,30 @@ namespace NS_Backup
             #endif
         }
 
+        /***************************************************************************
+        SPECIFICATION: 
+        CREATED:       6/30/2016
+        LAST CHANGE:   6/30/2016
+        ***************************************************************************/
+        private bool TraverseFiles( string[] sFiles, string sNewPath, bool bIsDir )
+        {
+            for (int i=0; i<sFiles.Length; i++)
+            {
+                string sFile = sFiles[i];
+
+                m_IncMutex.WaitOne();
+                int iNrFiles = m_iNrFiles;
+                m_IncMutex.ReleaseMutex();
+
+                if( !m_bSkipCount && null != m_eShowABar && 0 != iNrFiles ) 
+                {
+                    m_eShowABar( m_iCurrNrFiles++, iNrFiles );
+                }
+
+                if (! CopyPath( sFile, sNewPath, bIsDir, ref i ) ) return false;
+            }
+            return true;
+        }
 
         /***************************************************************************
         SPECIFICATION: 
