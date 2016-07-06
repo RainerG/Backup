@@ -676,7 +676,6 @@ namespace NS_Backup
                 return false;
             }
 
-
             #endif
         }
 
