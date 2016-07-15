@@ -414,7 +414,7 @@ namespace NS_Backup
 
                 foreach ( string dir in sDirs )
                 {
-                    CountFilesThread( new PathType( dir, Forced(dir) ) );
+                    CountFilesThread( new PathType( dir, pt.forced ) );
                 }
 
                 #endif
