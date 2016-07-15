@@ -15,11 +15,6 @@ namespace NS_Backup
 	/// Summary description for Backup.
 	/// </summary>
 	
-    /***************************************************************************
-    SPECIFICATION: Globals and types
-    CREATED:       2014
-    LAST CHANGE:   28.06.2016
-    ***************************************************************************/
     public delegate void dl_BuReady();
     public delegate void dl_ShowDir     ( String sDir );
     public delegate void dl_ShowFile    ( String sFname, bool bAppend );
@@ -28,31 +23,8 @@ namespace NS_Backup
     public delegate void dl_ShowTime    ( TimeSpan tSpan );
     public delegate void dl_IncFileCount( int iCnt );
 
-    public class DirType
-    {
-        public string src;
-        public string dst;
-    }
-
-    public class PathType
-    {
-        public string path;
-        public bool   forced;
-
-        public PathType( string a_Path, bool a_Forced )
-        {
-            path   = a_Path;
-            forced = a_Forced;
-        }
-    }
-
     public class Backup
     {
-        /***************************************************************************
-        SPECIFICATION: Members 
-        CREATED:       2014
-        LAST CHANGE:   28.06.2016
-        ***************************************************************************/
         public event dl_BuReady      m_eBuReady;
         public event dl_ShowDir      m_eShowDir;
         public event dl_ShowFile     m_eShowFile;
@@ -66,15 +38,10 @@ namespace NS_Backup
         private string          m_sDstPath;
         private string          m_sProtPath;
         private List<string>    m_aExtSingle;
-
         private List<string>    m_aExtensions;
         private List<string>    m_aExclusions;
-        private List<string>    m_aForced;
-
         private List<string>    m_aCntExtensions;
         private List<string>    m_aCntExclusions;
-        private List<string>    m_aCntForced;
-
         private List<string>    m_aProt;
         private StreamWriter    m_Prot;
         private bool            m_bIgnoreR;
@@ -97,7 +64,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       30.10.2004
-        LAST CHANGE:   28.06.2016
+        LAST CHANGE:   20.04.2009
         ***************************************************************************/
         public Backup()
         {
@@ -117,10 +84,8 @@ namespace NS_Backup
             m_aExtSingle     = new List<string>();
             m_aExtensions    = new List<string>();
             m_aExclusions    = new List<string>();
-            m_aForced        = new List<string>();
             m_aCntExtensions = new List<string>();
             m_aCntExclusions = new List<string>();
-            m_aCntForced     = new List<string>();
             m_aProt          = new List<string>();
 
             m_eIncFileCount += new dl_IncFileCount( IncFileCount );
@@ -140,18 +105,22 @@ namespace NS_Backup
             m_eIncFileCount -= new dl_IncFileCount( IncFileCount );
         }
 
-        public void SetDstPath (string sPath)  { m_sDstPath  = CompletePath(sPath); }
-        public void SetProtPath(string sPath)  { m_sProtPath = sPath; }
+        public void SetDstPath(string sPath)  { m_sDstPath  = CompletePath(sPath); }
+        public void SetProtPath(string sPath) { m_sProtPath = sPath; }
 
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       14.03.2007
-        LAST CHANGE:   28.06.2016
+        LAST CHANGE:   14.03.2007
         ***************************************************************************/
         public void SetSrcFiles(List<string> tPath) 
         { 
             m_tSrcPath.Clear();
-            m_tSrcPath.AddRange( tPath );
+
+            foreach (string p in tPath)
+            {
+                m_tSrcPath.Add(p); 
+            }
         }
 
         /***************************************************************************
@@ -211,7 +180,7 @@ namespace NS_Backup
             Thread CntThrd = new Thread( new ParameterizedThreadStart( CountFilesThread ) );
 
             CntThrd.Priority = ThreadPriority.Highest; // 16.11.2010
-            CntThrd.Start( new PathType( sPath, Forced( sPath )) );
+            CntThrd.Start(sPath);
         }
 
         
@@ -241,7 +210,7 @@ namespace NS_Backup
             foreach ( string path in m_tSrcPath )
             {
                 m_eShowFile("copying ...",false);
-                m_bRet = TraverseTree( new PathType( path, Forced( path )) );
+                m_bRet = TraverseTree(path);
             }
 
             m_eShowTime( m_tTimer.Elapsed );
@@ -267,6 +236,16 @@ namespace NS_Backup
             {
                 MessageBox.Show(e.Message, "Error in writing protocol file");
             }
+        }
+
+        /***************************************************************************
+        SPECIFICATION: 
+        CREATED:       05.07.2008
+        LAST CHANGE:   05.07.2008
+        ***************************************************************************/
+        private void TimerThread()
+        {
+
         }
 
         /***************************************************************************
@@ -361,18 +340,15 @@ namespace NS_Backup
         /***************************************************************************
         * SPECIFICATION: 
         * CREATED:       11.09.2005
-        * LAST CHANGE:   28.06.2016
+        * LAST CHANGE:   15.11.2010
         ***************************************************************************/
-        public void CountFilesThread( object a_PathTyp )
+        public void CountFilesThread( object oPath )
         {
-            PathType pt = (PathType)a_PathTyp;
+            string sPath = (string)oPath;
 
             try
             {
-                //Thread.Sleep(0);
-                if( Excluded( pt.path ) ) return;
-
-                if ( File.Exists(pt.path) )
+                if ( File.Exists(sPath) )
                 {   // if not a directory but a file just increment and return
                     m_eIncFileCount(1);
                     return;
@@ -388,30 +364,20 @@ namespace NS_Backup
 
                 #else
 
-                if (Directory.GetFiles(pt.path).Length != 0)  // if dir. contains single files
+                if (Directory.GetFiles(sPath).Length != 0)  // if dir. contains single files
                 {
-                    string[] files;
-
-                    if (pt.forced)
+                    foreach (string sExt in m_aCntExtensions)
                     {
-                        files = Directory.GetFiles( pt.path );
-                        m_eIncFileCount( files.Length );
-                    }
-                    else 
-                    {
-                        foreach (string sExt in m_aCntExtensions)
-                        {
-                            files = Directory.GetFiles( pt.path, sExt );
-                            m_eIncFileCount( files.Length );
-                        }
+                        string[] sFiles = Directory.GetFiles( sPath, sExt );
+                        m_eIncFileCount(sFiles.Length);
                     }
                 }
 
-                string[] sDirs = Directory.GetDirectories( pt.path );
+                string[] sDirs = Directory.GetDirectories(sPath);
 
-                foreach ( string dir in sDirs )
+                foreach ( string sDir in sDirs )
                 {
-                    CountFilesThread( new PathType( dir, pt.forced || Forced( dir ) ) );
+                    CountFilesThread( sDir );
                 }
 
                 #endif
@@ -421,18 +387,11 @@ namespace NS_Backup
                 MessageBox.Show(e.Message,"Error in counting files");
             }
         }
-
-
-        //private static void CountFiles( string sPath, string sExt )
-        //{
-        //    string[] sFiles = Directory.GetFiles( sPath, sExt );
-        //    m_eIncFileCount( sFiles.Length );
-        //}
-
+        
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       12.11.2006
-        LAST CHANGE:   21.06.2016
+        LAST CHANGE:   18.11.2010
         ***************************************************************************/
         private bool Excluded(string sFile)
         {
@@ -440,29 +399,12 @@ namespace NS_Backup
 
             string fname = Utils.GetFilename(sFile);
 
-            string ex = m_aExclusions.Find( e => e == fname );
+            foreach ( string f in m_aExclusions )
+            {
+                if ( f == fname ) return true;
+            }
 
-            if (ex == null) return false;
-
-            return true;
-        }
-
-        /***************************************************************************
-        SPECIFICATION: 
-        CREATED:       6/28/2016
-        LAST CHANGE:   28.06.2016
-        ***************************************************************************/
-        private bool Forced(string sDir)
-        {
-            if (0 == m_aForced.Count) return false;
-
-            string dir = Utils.GetFilename(sDir);
-
-            string fc = m_aForced.Find( f => f == dir );
-
-            if (fc == null) return false;
-
-            return true;
+            return false;
         }
 
         /***************************************************************************
@@ -492,9 +434,9 @@ namespace NS_Backup
         /***************************************************************************
         * SPECIFICATION: Recursive call for 
         * CREATED:       30.10.2004
-        * LAST CHANGE:   05.06.2016
+        * LAST CHANGE:   09.09.2010
         * *************************************************************************/
-        private bool TraverseTree( PathType a_PT )
+        private bool TraverseTree(string sPath)
         {
             #if ! NEW_ALG
 
@@ -502,57 +444,114 @@ namespace NS_Backup
             {
                 if (! m_bRunning) return false;
 
-                if( Excluded( a_PT.path ) ) return true;
-
-                if (null != m_eShowDir) m_eShowDir(a_PT.path);
+                if (null != m_eShowDir) m_eShowDir(sPath);
 
                 string[] sDirs;
-                bool     bIsDir = Directory.Exists(a_PT.path);
+                bool     bIsDir = Directory.Exists(sPath);
 
-                if ( bIsDir )  sDirs = Directory.GetDirectories(a_PT.path);
-                else	       sDirs = new string[0];
+                List<string> aExts;
 
-                string sNewPath = Utils.ConcatPaths( m_sDstPath, a_PT.path.Substring(m_sSrcPath.Length) );
-                string[] sFiles = null;
-
-                if (a_PT.forced)
+                if ( bIsDir )
                 {
+                    sDirs = Directory.GetDirectories(sPath);
+                    aExts = m_aExtensions;
+                }
+                else
+                {
+                    sDirs = new string[0];
+                    aExts = m_aExtensions;
+                }
+
+                string sNewPath = Utils.ConcatPaths(m_sDstPath,sPath.Substring(m_sSrcPath.Length));
+
+                foreach ( string sExt in aExts )
+                {
+                    Thread.Sleep(0);
+
+                    string[] sFiles;
+
                     if ( bIsDir )
                     {
-                        sFiles = Directory.GetFiles( a_PT.path );
+                        sFiles = Directory.GetFiles(sPath,sExt);
                     }
                     else
                     {
                         sFiles = new string[1];
-                        sFiles[0] = a_PT.path;
+                        sFiles[0] = sPath;
                     }
 
-                    if (! TraverseFiles( sFiles, sNewPath, bIsDir ) ) return false;
-                }
-                else
-                {
-                    foreach ( string sExt in m_aExtensions )
+                    foreach (string sFile in sFiles)
                     {
-                        Thread.Sleep(0);
+                        m_IncMutex.WaitOne();
+                        int iNrFiles = m_iNrFiles;
+                        m_IncMutex.ReleaseMutex();
 
-                        if ( bIsDir )
+                        if( !m_bSkipCount && null != m_eShowABar && 0 != iNrFiles ) 
                         {
-                            sFiles = Directory.GetFiles( a_PT.path, sExt );
-                        }
-                        else
-                        {
-                            sFiles = new string[1];
-                            sFiles[0] = a_PT.path;
+                            m_eShowABar( m_iCurrNrFiles++, iNrFiles );
                         }
 
-                        if ( ! TraverseFiles( sFiles, sNewPath, bIsDir ) ) return false;
+                        string sFileName = sFile.Substring(m_sSrcPath.Length);  // 09.09.2010
+
+                        if(Excluded(sFileName)) continue;
+
+                        string sNewFile = Utils.ConcatPaths(m_sDstPath,sFileName);
+
+                        System.DateTime odt = File.GetLastWriteTime(sFile); 
+                        System.DateTime crt = System.DateTime.Now;
+                        System.TimeSpan age = crt - odt;
+
+                        if ((m_iMaxAge > -1) && (m_iMaxAge < age.Days)) 
+                        {
+                            continue;
+                        }
+
+                        try
+                        {
+                            if (File.Exists(sNewFile))
+                            {
+                                System.DateTime ndt = File.GetLastWriteTime(sNewFile);
+                                System.TimeSpan ddt = odt - ndt;
+
+                                if (m_bEvenNewer || (ddt.TotalSeconds > m_dMaxTimeDelta))
+                                {
+                                    if (m_bIgnoreR) 
+                                    {
+                                        File.SetAttributes(sNewFile,FileAttributes.Normal);
+                                    }
+                                    CopyFile("old: ", sFile, sNewFile);
+                                }
+                            }
+                            else
+                            {
+                                string sNewDir;
+
+                                if (bIsDir)  sNewDir = sNewPath;
+                                else         sNewDir = Utils.GetPath(sNewPath);
+
+                                if ( !Directory.Exists(sNewDir) ) 
+                                {
+                                    Directory.CreateDirectory(sNewDir);
+                                }
+                                CopyFile("new: ", sFile, sNewFile);
+                            }
+                        }
+                        catch(UnauthorizedAccessException e)
+                        {
+                            DialogResult dr = MessageBox.Show(e.Message + "\n Possibly the R attribute is set.","Unauthorized Access",MessageBoxButtons.AbortRetryIgnore);
+                            if (DialogResult.Abort == dr) return false;
+                        }
+                        catch(Exception e)
+                        {
+                            DialogResult dr = MessageBox.Show(e.Message,"Common copy error",MessageBoxButtons.AbortRetryIgnore);
+                            if (DialogResult.Abort == dr) return false;
+                        }
                     }
                 }
-
 
                 foreach (string sDir in sDirs)
                 {
-                    if (! TraverseTree( new PathType ( sDir, Forced( sDir ) || a_PT.forced ) ) ) return false;  // Recursive call
+                    if (! TraverseTree(sDir)) return false;  // Recursive call
                 }
 
                 return true;
@@ -673,154 +672,45 @@ namespace NS_Backup
                 return false;
             }
 
+
             #endif
         }
 
         /***************************************************************************
         SPECIFICATION: 
-        CREATED:       6/30/2016
-        LAST CHANGE:   6/30/2016
-        ***************************************************************************/
-        private bool TraverseFiles( string[] sFiles, string sNewPath, bool bIsDir )
-        {
-            for (int i=0; i<sFiles.Length; i++)
-            {
-                string sFile = sFiles[i];
-
-                m_IncMutex.WaitOne();
-                int iNrFiles = m_iNrFiles;
-                m_IncMutex.ReleaseMutex();
-
-                if( !m_bSkipCount && null != m_eShowABar && 0 != iNrFiles ) 
-                {
-                    m_eShowABar( m_iCurrNrFiles++, iNrFiles );
-                }
-
-                if (! CopyPath( sFile, sNewPath, bIsDir, ref i ) ) return false;
-            }
-            return true;
-        }
-
-        /***************************************************************************
-        SPECIFICATION: 
-        CREATED:       6/29/2016
-        LAST CHANGE:   6/29/2016
-        ***************************************************************************/
-        private bool CopyPath( string a_SrcPath, string a_DstPath, bool a_IsDir, ref int a_Idx )
-        {
-            string sFileName = a_SrcPath.Substring(m_sSrcPath.Length);  // 09.09.2010
-
-            if(Excluded(sFileName)) return true;
-
-            string sNewFile = Utils.ConcatPaths(m_sDstPath,sFileName);
-
-            System.DateTime odt = File.GetLastWriteTime(a_SrcPath); 
-            System.DateTime crt = System.DateTime.Now;
-            System.TimeSpan age = crt - odt;
-
-            if ((m_iMaxAge > -1) && (m_iMaxAge < age.Days)) 
-            {
-                return true;
-            }
-
-            try
-            {
-                if (File.Exists(sNewFile))
-                {
-                    System.DateTime ndt = File.GetLastWriteTime(sNewFile);
-                    System.TimeSpan ddt = odt - ndt;
-
-                    if (m_bEvenNewer || (ddt.TotalSeconds > m_dMaxTimeDelta))
-                    {
-                        if (m_bIgnoreR) 
-                        {
-                            File.SetAttributes(sNewFile,FileAttributes.Normal);
-                        }
-                        CopyFile("old: ", a_SrcPath, sNewFile);
-                    }
-                }
-                else
-                {
-                    string sNewDir;
-
-                    if (a_IsDir)  sNewDir = a_DstPath;
-                    else          sNewDir = Utils.GetPath(a_DstPath);
-
-                    if ( !Directory.Exists(sNewDir) ) 
-                    {
-                        Directory.CreateDirectory(sNewDir);
-                    }
-                    CopyFile("new: ", a_SrcPath, sNewFile);
-                }
-            }
-            catch(UnauthorizedAccessException e)
-            {
-                DialogResult dr = MessageBox.Show(e.Message + "\n Possibly the R attribute is set.","Unauthorized Access",MessageBoxButtons.AbortRetryIgnore);
-                if (DialogResult.Abort == dr) return false;
-            }
-            catch( IOException e )
-            {
-                DialogResult dr = MessageBox.Show( e.Message, "IO exception error", MessageBoxButtons.AbortRetryIgnore );
-                switch( dr )
-                {
-                    case DialogResult.Abort: return false;
-                    case DialogResult.Retry: a_Idx--; return true;
-                }
-            }
-            catch(Exception e)
-            {
-                DialogResult dr = MessageBox.Show(e.Message,"Common copy error",MessageBoxButtons.AbortRetryIgnore);
-                if (DialogResult.Abort == dr) return false;
-            }
-
-            return true;
-        }
-
-        /***************************************************************************
-        SPECIFICATION: 
         CREATED:       30.10.2004
-        LAST CHANGE:   28.06.2016 
+        LAST CHANGE:   20.04.2009 
         ***************************************************************************/
         public void ClearExts()
         {
-            m_aExtensions   .Clear();
-            m_aExclusions   .Clear();
+            m_aExtensions.Clear();
+            m_aExclusions.Clear();
             m_aCntExtensions.Clear();
             m_aCntExclusions.Clear();
-            m_aCntForced    .Clear();
-            m_aForced       .Clear();
         }
 
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       30.10.2004
-        LAST CHANGE:   28.06.2016
+        LAST CHANGE:   30.10.2004
         ***************************************************************************/
         public void AddExt(string sExt)
         {
             if (null == sExt)    return;
             if (""   == sExt)    return;
-
-            switch( sExt[0] )
+            if( sExt[0] == '!' )
             {
-                case '!':
-                        m_aExclusions   .Add( sExt.Substring( 1 ) );
-                        m_aCntExclusions.Add( sExt.Substring( 1 ) );
-                        break;
-
-                case '#':
-                        m_aForced       .Add( sExt.Substring( 1 ) );
-                        m_aCntForced    .Add( sExt.Substring( 1 ) );
-                        break;
-
-                default:
-                        m_aExtensions   .Add( sExt );
-                        m_aCntExtensions.Add( sExt );
-                        break;
+                m_aExclusions   .Add( sExt.Substring( 1 ) );
+                m_aCntExclusions.Add( sExt.Substring( 1 ) );
+            }
+            else
+            {
+                m_aExtensions   .Add( sExt );
+                m_aCntExtensions.Add( sExt );
             }
         }
-    } // class    
-} // namespace
+    }    
+}
 
 
 
