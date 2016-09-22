@@ -237,7 +237,7 @@ namespace NS_Backup
             // 
             this.StartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartBtn.Location = new System.Drawing.Point(637, 467);
+            this.StartBtn.Location = new System.Drawing.Point(637, 415);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(70, 65);
             this.StartBtn.TabIndex = 0;
@@ -260,7 +260,7 @@ namespace NS_Backup
             this.groupBox1.Controls.Add(this.BtnBrowseSrc);
             this.groupBox1.Location = new System.Drawing.Point(16, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(691, 273);
+            this.groupBox1.Size = new System.Drawing.Size(691, 228);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
@@ -269,7 +269,7 @@ namespace NS_Backup
             // 
             this.button_SelectInvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_SelectInvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_SelectInvert.Location = new System.Drawing.Point(615, 240);
+            this.button_SelectInvert.Location = new System.Drawing.Point(615, 195);
             this.button_SelectInvert.Name = "button_SelectInvert";
             this.button_SelectInvert.Size = new System.Drawing.Size(60, 23);
             this.button_SelectInvert.TabIndex = 13;
@@ -281,7 +281,7 @@ namespace NS_Backup
             // 
             this.button_SelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_SelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_SelectAll.Location = new System.Drawing.Point(540, 240);
+            this.button_SelectAll.Location = new System.Drawing.Point(540, 195);
             this.button_SelectAll.Name = "button_SelectAll";
             this.button_SelectAll.Size = new System.Drawing.Size(60, 23);
             this.button_SelectAll.TabIndex = 12;
@@ -331,7 +331,7 @@ namespace NS_Backup
             this.groupBox2.Controls.Add(this.checkBoxDrives);
             this.groupBox2.Controls.Add(this.comboDest);
             this.groupBox2.Controls.Add(this.BtnBrowseDst);
-            this.groupBox2.Location = new System.Drawing.Point(16, 334);
+            this.groupBox2.Location = new System.Drawing.Point(16, 282);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(691, 87);
             this.groupBox2.TabIndex = 1;
@@ -499,7 +499,7 @@ namespace NS_Backup
             this.textBoxActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxActivity.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.textBoxActivity.Location = new System.Drawing.Point(16, 438);
+            this.textBoxActivity.Location = new System.Drawing.Point(16, 386);
             this.textBoxActivity.Name = "textBoxActivity";
             this.textBoxActivity.Size = new System.Drawing.Size(691, 20);
             this.textBoxActivity.TabIndex = 5;
@@ -509,7 +509,7 @@ namespace NS_Backup
             this.textBoxFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilename.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFilename.Location = new System.Drawing.Point(16, 467);
+            this.textBoxFilename.Location = new System.Drawing.Point(16, 415);
             this.textBoxFilename.Name = "textBoxFilename";
             this.textBoxFilename.Size = new System.Drawing.Size(594, 20);
             this.textBoxFilename.TabIndex = 6;
@@ -519,7 +519,7 @@ namespace NS_Backup
             // 
             this.progressBarFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarFile.Location = new System.Drawing.Point(16, 493);
+            this.progressBarFile.Location = new System.Drawing.Point(16, 441);
             this.progressBarFile.Name = "progressBarFile";
             this.progressBarFile.Size = new System.Drawing.Size(594, 16);
             this.progressBarFile.TabIndex = 7;
@@ -527,7 +527,7 @@ namespace NS_Backup
             // button_Swap
             // 
             this.button_Swap.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button_Swap.Location = new System.Drawing.Point(296, 298);
+            this.button_Swap.Location = new System.Drawing.Point(296, 246);
             this.button_Swap.Name = "button_Swap";
             this.button_Swap.Size = new System.Drawing.Size(57, 25);
             this.button_Swap.TabIndex = 8;
@@ -538,7 +538,7 @@ namespace NS_Backup
             // 
             this.checkShutdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkShutdown.AutoSize = true;
-            this.checkShutdown.Location = new System.Drawing.Point(556, 311);
+            this.checkShutdown.Location = new System.Drawing.Point(556, 259);
             this.checkShutdown.Name = "checkShutdown";
             this.checkShutdown.Size = new System.Drawing.Size(74, 17);
             this.checkShutdown.TabIndex = 9;
@@ -549,7 +549,7 @@ namespace NS_Backup
             // 
             this.progressBarAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarAll.Location = new System.Drawing.Point(16, 515);
+            this.progressBarAll.Location = new System.Drawing.Point(16, 463);
             this.progressBarAll.Name = "progressBarAll";
             this.progressBarAll.Size = new System.Drawing.Size(594, 17);
             this.progressBarAll.TabIndex = 10;
@@ -557,7 +557,7 @@ namespace NS_Backup
             // textBox_Timer
             // 
             this.textBox_Timer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox_Timer.Location = new System.Drawing.Point(16, 301);
+            this.textBox_Timer.Location = new System.Drawing.Point(16, 249);
             this.textBox_Timer.Name = "textBox_Timer";
             this.textBox_Timer.ReadOnly = true;
             this.textBox_Timer.Size = new System.Drawing.Size(63, 20);
@@ -567,7 +567,7 @@ namespace NS_Backup
             // textBoxCounts
             // 
             this.textBoxCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxCounts.Location = new System.Drawing.Point(84, 301);
+            this.textBoxCounts.Location = new System.Drawing.Point(84, 249);
             this.textBoxCounts.Name = "textBoxCounts";
             this.textBoxCounts.ReadOnly = true;
             this.textBoxCounts.Size = new System.Drawing.Size(100, 20);
@@ -579,7 +579,7 @@ namespace NS_Backup
             // 
             this.checkHibernate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkHibernate.AutoSize = true;
-            this.checkHibernate.Location = new System.Drawing.Point(557, 294);
+            this.checkHibernate.Location = new System.Drawing.Point(557, 242);
             this.checkHibernate.Name = "checkHibernate";
             this.checkHibernate.Size = new System.Drawing.Size(72, 17);
             this.checkHibernate.TabIndex = 13;
@@ -590,7 +590,7 @@ namespace NS_Backup
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(629, 305);
+            this.label1.Location = new System.Drawing.Point(629, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 14;
@@ -627,7 +627,7 @@ namespace NS_Backup
             this.listViewFiles.KindOfTime = NS_UserList.KIND_OF_TIME.KD_Write;
             this.listViewFiles.Location = new System.Drawing.Point(16, 75);
             this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(659, 159);
+            this.listViewFiles.Size = new System.Drawing.Size(659, 114);
             this.listViewFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewFiles.TabIndex = 6;
             this.listViewFiles.UseCompatibleStateImageBehavior = false;
@@ -658,7 +658,7 @@ namespace NS_Backup
             // 
             this.AllowDrop = true;
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(722, 583);
+            this.ClientSize = new System.Drawing.Size(722, 492);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkHibernate);
             this.Controls.Add(this.textBoxCounts);
