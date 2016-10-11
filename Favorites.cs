@@ -166,7 +166,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       22.03.2006
-        LAST CHANGE:   30.11.2014
+        LAST CHANGE:   10.10.2016
         ***************************************************************************/
         public void Serialize(ref AppSettings iConfig)
         {
@@ -191,19 +191,9 @@ namespace NS_Backup
                     ds.sSrcDescr    = iConfig.Deserialize<String>();
                     ds.sDstDescr    = iConfig.Deserialize<String>();
                     ds.tSelected    = (List<string>)iConfig.Deserialize();
+                    ds.sDstDrive    = iConfig.Deserialize<string>();
+                    ds.sSrcDrive    = iConfig.Deserialize<string>();
 
-                    if( iConfig.DbVersion > 10 ) // 10.11.2014
-                    {
-                        ds.sDstDrive = iConfig.Deserialize<string>();
-                    }
-                    else
-                    {
-                        ds.sDstDrive  = "c:\\";
-                    }
-                    if( iConfig.DbVersion > 11 ) // 10.12.2014
-                    {
-                        ds.sSrcDrive = iConfig.Deserialize<string>();
-                    }
                     m_DataList.Add( ds );
                 }
 
@@ -228,8 +218,8 @@ namespace NS_Backup
                     iConfig.Serialize( ds.sSrcDescr );
                     iConfig.Serialize( ds.sDstDescr );
                     iConfig.Serialize( ds.tSelected );
-                    iConfig.Serialize( ds.sDstDrive );    // 10.11.2014
-                    iConfig.Serialize( ds.sSrcDrive );    // 10.12.2014
+                    iConfig.Serialize( ds.sDstDrive );    
+                    iConfig.Serialize( ds.sSrcDrive );    
                 }
             }
 

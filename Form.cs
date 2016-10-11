@@ -42,7 +42,7 @@ namespace NS_Backup
         public event dl_ShowActivity     m_eShowActivity;
 
         private const int DB_VERSION     = 90;  // 05.06.2016
-        private const string RELEASE     = "Release: 1.36";
+        private const string RELEASE     = "Release: 1.37";
         private const string INI_FNAME   = "backup.ini";
 
         private AppSettings             m_Config;
@@ -1790,7 +1790,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       24.12.2009
-        LAST CHANGE:   24.12.2009
+        LAST CHANGE:   10.10.2016
         ***************************************************************************/
         public void EnterSelected( List<string> aSelected )
         {
@@ -1799,13 +1799,9 @@ namespace NS_Backup
 
             foreach( ListViewItem it in listViewFiles.Items )
             {
-                foreach ( string name in aSelected )
-                {
-                    if( it.Text == name )
-                    {
-                        it.Selected = true; 
-                    }
-                }
+                string sel = aSelected.Find( s => s == it.Text );
+                if (sel == null) continue;
+                it.Selected = true;
             }
 
             m_bEnteringSelection = false;

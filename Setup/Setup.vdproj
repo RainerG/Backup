@@ -131,7 +131,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                       "
+                "FrameworkVersion" = "8:2.0.50727                                         "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 "SupportedRuntimes" = "8:1.1.4322"
@@ -290,7 +290,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TreeCopy"
         "ProductCode" = "8:{751BDD89-E793-436D-976B-78D7E9282F89}"
-        "PackageCode" = "8:{F4CE61A2-53E6-42B6-99F3-C23A36EDB6C2}"
+        "PackageCode" = "8:{F16C3B24-61DF-4FEF-8E60-1DE117B14186}"
         "UpgradeCode" = "8:{BC41D0E1-7788-46B1-98A9-BB5683D04654}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

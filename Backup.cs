@@ -730,7 +730,11 @@ namespace NS_Backup
                     System.DateTime ndt = File.GetLastWriteTime(sNewFile);
                     System.TimeSpan ddt = odt - ndt;
 
-                    if (m_bEvenNewer || (ddt.TotalSeconds > m_dMaxTimeDelta))
+                    bool eq = true;
+                    
+                    eq = Utils.FilesREqual( a_SrcPath, sNewFile );
+
+                    if ( (!eq && m_bEvenNewer) || (ddt.TotalSeconds > m_dMaxTimeDelta))
                     {
                         if (m_bIgnoreR) 
                         {
