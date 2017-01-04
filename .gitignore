@@ -1,10 +1,4 @@
-
-#ignore thumbnails created by windows
 Thumbs.db
-#Ignore files build by Visual Studio
-obj
-bin
-*.wbk
 *.obj
 *.exe
 *.pdb
@@ -16,6 +10,7 @@ bin
 *_p.c
 *.ncb
 *.suo
+*.sln.docstates
 *.tlb
 *.tlh
 *.bak
@@ -26,6 +21,9 @@ bin
 [Dd]ebug*/
 *.lib
 *.sbr
+obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+*.vssscc
+$tf*/

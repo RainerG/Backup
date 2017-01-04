@@ -13,27 +13,9 @@ namespace NS_Backup
 {
     public delegate FavDataSet dl_GetCurrProperties( );
 
-    /***************************************************************************
-    SPECIFICATION: 
-    CREATED:       ?
-    LAST CHANGE:   11/2/2016
-    ***************************************************************************/
+
     public class FavDataSet
     {
-        public bool   bDrive;
-        public bool   bEvenNewer;
-        public bool   bCopyAll;
-        public bool   bIgnoreR;     // added 04.05.2006
-        public bool   bRegardAge;   // "
-        public bool   bFoldersOnly; // added 22.03.2007
-        public string sSrc;
-        public string sDst;
-        public string sSrcDescr;  // added 21.12.2009
-        public string sDstDescr;  // " 
-        public string sDstDrive;  // added 10.11.2014
-        public string sSrcDrive;  // added 09.12.2014
-        public List<string> tSelected;
-
         public FavDataSet()
         {
             tSelected   = new List<string>();
@@ -46,11 +28,19 @@ namespace NS_Backup
             bDrive      = false;
         }
 
-        public void LoadSelected( List<string> a_Selctd )
-        {
-            tSelected.Clear();
-            tSelected.AddRange( a_Selctd );
-        }
+        public bool   bDrive;
+        public bool   bEvenNewer;
+        public bool   bCopyAll;
+        public bool   bIgnoreR;   // added 04.05.2006
+        public bool   bRegardAge; // "
+        public bool   bFoldersOnly; // added 22.03.2007
+        public string sSrc;
+        public string sDst;
+        public string sSrcDescr;  // added 21.12.2009
+        public string sDstDescr;  // " 
+        public string sDstDrive;  // added 10.11.2014
+        public string sSrcDrive;  // added 09.12.2014
+        public List<string> tSelected;
     }
 
 	/// <summary>
@@ -471,7 +461,7 @@ namespace NS_Backup
             m_Main.SyncSrcDriveBox(ds.sSrc);
 
             m_Main.SetRegardFileage( ds.bRegardAge );
-            m_Main.EnterSelected   ( ds.tSelected  );
+            m_Main.EnterSelected( ds.tSelected );
         }
 
 
