@@ -7,7 +7,7 @@
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
-"SccProjectName" = "8:\"$/data/project/CS/Backup\", LCCAAAAA"
+"SccProjectName" = "8:\"$/data/project/C#/Backup\", LCCAAAAA"
 "SccLocalPath" = "8:.."
 "SccAuxPath" = "8:"
 "SccProvider" = "8:MSSCCI:Microsoft Visual SourceSafe"
@@ -27,7 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_99D7006DF021EC515396F3FE33DC78AB"
+        "MsmKey" = "8:_723248CB8D0A0E8EB8567000E45119A1"
         "OwnerKey" = "8:_DDE9E726D0014D72BEA515E82E1122A1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_99D7006DF021EC515396F3FE33DC78AB"
+        "OwnerKey" = "8:_723248CB8D0A0E8EB8567000E45119A1"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -131,7 +131,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                          "
+                "Version" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 "SupportedRuntimes" = "8:1.1.4322"
@@ -180,18 +180,13 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_99D7006DF021EC515396F3FE33DC78AB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_723248CB8D0A0E8EB8567000E45119A1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Shared, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Shared, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_99D7006DF021EC515396F3FE33DC78AB"
-                    {
-                    "Name" = "8:Shared.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Shared.dll"
             "TargetName" = "8:"
@@ -283,16 +278,14 @@
         "MsiBootstrapper"
         {
         "LangId" = "3:1033"
-        "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TreeCopy"
         "ProductCode" = "8:{751BDD89-E793-436D-976B-78D7E9282F89}"
-        "PackageCode" = "8:{3A0C213F-30CA-4479-9337-CEC59F84F8C2}"
+        "PackageCode" = "8:{6C150885-096C-48C0-9F4D-0E2DF3BE3DE7}"
         "UpgradeCode" = "8:{BC41D0E1-7788-46B1-98A9-BB5683D04654}"
-        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
@@ -879,6 +872,9 @@
                 {
                 }
             }
+        }
+        "VJSharpPlugin"
+        {
         }
     }
 }

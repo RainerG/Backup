@@ -1,10 +1,10 @@
 !~*.*
 !bin
 !GD_Files
-!ISP_Files
 !isp_files
-!REN_Files
+!ISP_Files
 !obj
+!REN_Files
 !Sandboxes
 !test.txt
 #.git
@@ -38,6 +38,7 @@
 *.cpt
 *.cs*
 *.cur
+*.dash
 *.dat
 *.def
 *.doc*
@@ -158,6 +159,7 @@
 *.xml
 *.zip
 *.zrx
+.gitignore
 colorfilters.
 GenerateIPCMessages.exe
 Gpib-32.obj
@@ -170,11 +172,4 @@ Nrt_Tra.*
 pdrem.lib
 preferences.
 Z21Default.*
-.gitignore
-
-
-
-
-
-
 

@@ -29,7 +29,7 @@ namespace NS_Backup
     /***************************************************************************
     SPECIFICATION: 
     CREATED:       08.03.2007
-    LAST CHANGE:   25.03.2016
+    LAST CHANGE:   02.11.2016
     ***************************************************************************/
     public class Form : System.Windows.Forms.Form
 	{
@@ -124,8 +124,6 @@ namespace NS_Backup
             sCurrDir         = Utils.ConcatPaths( sCurrDir, SystemInformation.ComputerName );
             if ( ! Directory.Exists(sCurrDir) ) Directory.CreateDirectory( sCurrDir );
             m_Config         = new AppSettings( Utils.ConcatPaths(sCurrDir,INI_FNAME) );
-            m_Config.m_OldVersion1 = 7;
-            m_Config.m_OldVersion2 = 8;
             m_Favs           = new Favorites(ref menuItemFavorites,this);
             m_Backup         = null;
             m_bRunning       = false;
@@ -171,9 +169,12 @@ namespace NS_Backup
             this.buttonParentDir = new System.Windows.Forms.Button();
             this.checkBoxFolderOnly = new System.Windows.Forms.CheckBox();
             this.comboSrcDrv = new System.Windows.Forms.ComboBox();
+            this.listViewFiles = new NS_UserList.UserFileListView();
+            this.comboSrc = new NS_UserCombo.FileComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxDrives = new System.Windows.Forms.ComboBox();
             this.checkBoxDrives = new System.Windows.Forms.CheckBox();
+            this.comboDest = new NS_UserCombo.FileComboBox();
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.menuItemOptions = new System.Windows.Forms.MenuItem();
             this.menuItemCopyOnStart = new System.Windows.Forms.MenuItem();
@@ -204,9 +205,6 @@ namespace NS_Backup
             this.textBoxCounts = new System.Windows.Forms.TextBox();
             this.checkHibernate = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboDest = new NS_UserCombo.FileComboBox();
-            this.listViewFiles = new NS_UserList.UserFileListView();
-            this.comboSrc = new NS_UserCombo.FileComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -214,9 +212,9 @@ namespace NS_Backup
             // BtnBrowseDst
             // 
             this.BtnBrowseDst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnBrowseDst.Location = new System.Drawing.Point(612, 24);
+            this.BtnBrowseDst.Location = new System.Drawing.Point(568, 30);
             this.BtnBrowseDst.Name = "BtnBrowseDst";
-            this.BtnBrowseDst.Size = new System.Drawing.Size(63, 22);
+            this.BtnBrowseDst.Size = new System.Drawing.Size(88, 27);
             this.BtnBrowseDst.TabIndex = 6;
             this.BtnBrowseDst.TabStop = false;
             this.BtnBrowseDst.Text = "Browse";
@@ -225,9 +223,9 @@ namespace NS_Backup
             // BtnBrowseSrc
             // 
             this.BtnBrowseSrc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnBrowseSrc.Location = new System.Drawing.Point(612, 17);
+            this.BtnBrowseSrc.Location = new System.Drawing.Point(568, 21);
             this.BtnBrowseSrc.Name = "BtnBrowseSrc";
-            this.BtnBrowseSrc.Size = new System.Drawing.Size(63, 23);
+            this.BtnBrowseSrc.Size = new System.Drawing.Size(88, 28);
             this.BtnBrowseSrc.TabIndex = 5;
             this.BtnBrowseSrc.TabStop = false;
             this.BtnBrowseSrc.Text = "Browse";
@@ -237,9 +235,9 @@ namespace NS_Backup
             // 
             this.StartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartBtn.Location = new System.Drawing.Point(637, 415);
+            this.StartBtn.Location = new System.Drawing.Point(603, 500);
             this.StartBtn.Name = "StartBtn";
-            this.StartBtn.Size = new System.Drawing.Size(70, 65);
+            this.StartBtn.Size = new System.Drawing.Size(98, 80);
             this.StartBtn.TabIndex = 0;
             this.StartBtn.TabStop = false;
             this.StartBtn.Text = "&Copy";
@@ -258,9 +256,9 @@ namespace NS_Backup
             this.groupBox1.Controls.Add(this.listViewFiles);
             this.groupBox1.Controls.Add(this.comboSrc);
             this.groupBox1.Controls.Add(this.BtnBrowseSrc);
-            this.groupBox1.Location = new System.Drawing.Point(16, 8);
+            this.groupBox1.Location = new System.Drawing.Point(22, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(691, 228);
+            this.groupBox1.Size = new System.Drawing.Size(679, 269);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
@@ -269,9 +267,9 @@ namespace NS_Backup
             // 
             this.button_SelectInvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_SelectInvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_SelectInvert.Location = new System.Drawing.Point(615, 195);
+            this.button_SelectInvert.Location = new System.Drawing.Point(572, 229);
             this.button_SelectInvert.Name = "button_SelectInvert";
-            this.button_SelectInvert.Size = new System.Drawing.Size(60, 23);
+            this.button_SelectInvert.Size = new System.Drawing.Size(84, 28);
             this.button_SelectInvert.TabIndex = 13;
             this.button_SelectInvert.Text = "&Invert";
             this.button_SelectInvert.UseVisualStyleBackColor = true;
@@ -281,9 +279,9 @@ namespace NS_Backup
             // 
             this.button_SelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_SelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_SelectAll.Location = new System.Drawing.Point(540, 195);
+            this.button_SelectAll.Location = new System.Drawing.Point(467, 229);
             this.button_SelectAll.Name = "button_SelectAll";
-            this.button_SelectAll.Size = new System.Drawing.Size(60, 23);
+            this.button_SelectAll.Size = new System.Drawing.Size(84, 28);
             this.button_SelectAll.TabIndex = 12;
             this.button_SelectAll.Text = "Select &all";
             this.button_SelectAll.UseVisualStyleBackColor = true;
@@ -292,9 +290,9 @@ namespace NS_Backup
             // buttonParentDir
             // 
             this.buttonParentDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonParentDir.Location = new System.Drawing.Point(570, 17);
+            this.buttonParentDir.Location = new System.Drawing.Point(509, 21);
             this.buttonParentDir.Name = "buttonParentDir";
-            this.buttonParentDir.Size = new System.Drawing.Size(30, 23);
+            this.buttonParentDir.Size = new System.Drawing.Size(42, 28);
             this.buttonParentDir.TabIndex = 11;
             this.buttonParentDir.Text = "[..]";
             this.buttonParentDir.UseVisualStyleBackColor = true;
@@ -303,9 +301,9 @@ namespace NS_Backup
             // checkBoxFolderOnly
             // 
             this.checkBoxFolderOnly.AutoSize = true;
-            this.checkBoxFolderOnly.Location = new System.Drawing.Point(278, 20);
+            this.checkBoxFolderOnly.Location = new System.Drawing.Point(389, 25);
             this.checkBoxFolderOnly.Name = "checkBoxFolderOnly";
-            this.checkBoxFolderOnly.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxFolderOnly.Size = new System.Drawing.Size(100, 21);
             this.checkBoxFolderOnly.TabIndex = 10;
             this.checkBoxFolderOnly.Text = "Folder only";
             this.checkBoxFolderOnly.UseVisualStyleBackColor = true;
@@ -314,14 +312,54 @@ namespace NS_Backup
             // comboSrcDrv
             // 
             this.comboSrcDrv.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.comboSrcDrv.Location = new System.Drawing.Point(16, 18);
+            this.comboSrcDrv.Location = new System.Drawing.Point(22, 22);
             this.comboSrcDrv.MaxDropDownItems = 30;
             this.comboSrcDrv.Name = "comboSrcDrv";
-            this.comboSrcDrv.Size = new System.Drawing.Size(249, 22);
+            this.comboSrcDrv.Size = new System.Drawing.Size(349, 25);
             this.comboSrcDrv.TabIndex = 9;
             this.comboSrcDrv.Text = "C:";
             this.comboSrcDrv.SelectedIndexChanged += new System.EventHandler(this.comboSrcDrv_SelectedIndexChanged);
             this.comboSrcDrv.Click += new System.EventHandler(this.comboSrcDrv_Click);
+            // 
+            // listViewFiles
+            // 
+            this.listViewFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewFiles.CurrDir = null;
+            this.listViewFiles.CurrExt = "*.*";
+            this.listViewFiles.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewFiles.FullRowSelect = true;
+            this.listViewFiles.HideSelection = false;
+            this.listViewFiles.KindOfTime = NS_UserList.KIND_OF_TIME.KD_Write;
+            this.listViewFiles.Location = new System.Drawing.Point(22, 92);
+            this.listViewFiles.Name = "listViewFiles";
+            this.listViewFiles.Size = new System.Drawing.Size(634, 130);
+            this.listViewFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listViewFiles.TabIndex = 6;
+            this.listViewFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewFiles.View = System.Windows.Forms.View.Details;
+            this.listViewFiles.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewFiles_ItemSelectionChanged);
+            this.listViewFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewFiles_MouseDoubleClick);
+            // 
+            // comboSrc
+            // 
+            this.comboSrc.AllowDrop = true;
+            this.comboSrc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboSrc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboSrc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            this.comboSrc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboSrc.Location = new System.Drawing.Point(22, 59);
+            this.comboSrc.MaxDropDownItems = 20;
+            this.comboSrc.Name = "comboSrc";
+            this.comboSrc.ReadOnly = false;
+            this.comboSrc.Size = new System.Drawing.Size(634, 25);
+            this.comboSrc.Sorted = true;
+            this.comboSrc.TabIndex = 1;
+            this.comboSrc.Text = "Enter source folder";
+            this.comboSrc.SelectedIndexChanged += new System.EventHandler(this.comboSrc_SelectedIndexChanged);
+            this.comboSrc.TextUpdate += new System.EventHandler(this.comboSrc_TextUpdate);
             // 
             // groupBox2
             // 
@@ -331,9 +369,9 @@ namespace NS_Backup
             this.groupBox2.Controls.Add(this.checkBoxDrives);
             this.groupBox2.Controls.Add(this.comboDest);
             this.groupBox2.Controls.Add(this.BtnBrowseDst);
-            this.groupBox2.Location = new System.Drawing.Point(16, 282);
+            this.groupBox2.Location = new System.Drawing.Point(22, 336);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(691, 87);
+            this.groupBox2.Size = new System.Drawing.Size(679, 107);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Destination folder";
@@ -342,10 +380,10 @@ namespace NS_Backup
             // 
             this.comboBoxDrives.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDrives.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.comboBoxDrives.Location = new System.Drawing.Point(334, 24);
+            this.comboBoxDrives.Location = new System.Drawing.Point(179, 30);
             this.comboBoxDrives.MaxDropDownItems = 30;
             this.comboBoxDrives.Name = "comboBoxDrives";
-            this.comboBoxDrives.Size = new System.Drawing.Size(266, 22);
+            this.comboBoxDrives.Size = new System.Drawing.Size(372, 25);
             this.comboBoxDrives.TabIndex = 8;
             this.comboBoxDrives.Text = "C:";
             this.comboBoxDrives.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrives_SelectedIndexChanged);
@@ -353,12 +391,30 @@ namespace NS_Backup
             // 
             // checkBoxDrives
             // 
-            this.checkBoxDrives.Location = new System.Drawing.Point(16, 24);
+            this.checkBoxDrives.Location = new System.Drawing.Point(22, 30);
             this.checkBoxDrives.Name = "checkBoxDrives";
-            this.checkBoxDrives.Size = new System.Drawing.Size(88, 24);
+            this.checkBoxDrives.Size = new System.Drawing.Size(124, 29);
             this.checkBoxDrives.TabIndex = 7;
             this.checkBoxDrives.Text = "Tree 2 Drive";
             this.checkBoxDrives.CheckedChanged += new System.EventHandler(this.checkBoxDrives_CheckedChanged);
+            // 
+            // comboDest
+            // 
+            this.comboDest.AllowDrop = true;
+            this.comboDest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboDest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboDest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            this.comboDest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboDest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.comboDest.Location = new System.Drawing.Point(22, 65);
+            this.comboDest.MaxDropDownItems = 20;
+            this.comboDest.Name = "comboDest";
+            this.comboDest.ReadOnly = false;
+            this.comboDest.Size = new System.Drawing.Size(634, 25);
+            this.comboDest.Sorted = true;
+            this.comboDest.TabIndex = 2;
+            this.comboDest.Text = "Enter destination folder";
             // 
             // mainMenu
             // 
@@ -499,9 +555,9 @@ namespace NS_Backup
             this.textBoxActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxActivity.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.textBoxActivity.Location = new System.Drawing.Point(16, 386);
+            this.textBoxActivity.Location = new System.Drawing.Point(22, 464);
             this.textBoxActivity.Name = "textBoxActivity";
-            this.textBoxActivity.Size = new System.Drawing.Size(691, 20);
+            this.textBoxActivity.Size = new System.Drawing.Size(679, 23);
             this.textBoxActivity.TabIndex = 5;
             // 
             // textBoxFilename
@@ -509,9 +565,9 @@ namespace NS_Backup
             this.textBoxFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilename.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFilename.Location = new System.Drawing.Point(16, 415);
+            this.textBoxFilename.Location = new System.Drawing.Point(22, 500);
             this.textBoxFilename.Name = "textBoxFilename";
-            this.textBoxFilename.Size = new System.Drawing.Size(594, 20);
+            this.textBoxFilename.Size = new System.Drawing.Size(543, 23);
             this.textBoxFilename.TabIndex = 6;
             this.textBoxFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -519,17 +575,17 @@ namespace NS_Backup
             // 
             this.progressBarFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarFile.Location = new System.Drawing.Point(16, 441);
+            this.progressBarFile.Location = new System.Drawing.Point(22, 532);
             this.progressBarFile.Name = "progressBarFile";
-            this.progressBarFile.Size = new System.Drawing.Size(594, 16);
+            this.progressBarFile.Size = new System.Drawing.Size(543, 19);
             this.progressBarFile.TabIndex = 7;
             // 
             // button_Swap
             // 
             this.button_Swap.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button_Swap.Location = new System.Drawing.Point(296, 246);
+            this.button_Swap.Location = new System.Drawing.Point(270, 292);
             this.button_Swap.Name = "button_Swap";
-            this.button_Swap.Size = new System.Drawing.Size(57, 25);
+            this.button_Swap.Size = new System.Drawing.Size(80, 31);
             this.button_Swap.TabIndex = 8;
             this.button_Swap.Text = "&Swap";
             this.button_Swap.Click += new System.EventHandler(this.button_Swap_Click);
@@ -538,9 +594,9 @@ namespace NS_Backup
             // 
             this.checkShutdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkShutdown.AutoSize = true;
-            this.checkShutdown.Location = new System.Drawing.Point(556, 259);
+            this.checkShutdown.Location = new System.Drawing.Point(501, 308);
             this.checkShutdown.Name = "checkShutdown";
-            this.checkShutdown.Size = new System.Drawing.Size(74, 17);
+            this.checkShutdown.Size = new System.Drawing.Size(92, 21);
             this.checkShutdown.TabIndex = 9;
             this.checkShutdown.Text = "Shutdown";
             this.checkShutdown.UseVisualStyleBackColor = true;
@@ -549,28 +605,28 @@ namespace NS_Backup
             // 
             this.progressBarAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarAll.Location = new System.Drawing.Point(16, 463);
+            this.progressBarAll.Location = new System.Drawing.Point(22, 559);
             this.progressBarAll.Name = "progressBarAll";
-            this.progressBarAll.Size = new System.Drawing.Size(594, 17);
+            this.progressBarAll.Size = new System.Drawing.Size(543, 21);
             this.progressBarAll.TabIndex = 10;
             // 
             // textBox_Timer
             // 
             this.textBox_Timer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox_Timer.Location = new System.Drawing.Point(16, 249);
+            this.textBox_Timer.Location = new System.Drawing.Point(22, 295);
             this.textBox_Timer.Name = "textBox_Timer";
             this.textBox_Timer.ReadOnly = true;
-            this.textBox_Timer.Size = new System.Drawing.Size(63, 20);
+            this.textBox_Timer.Size = new System.Drawing.Size(89, 23);
             this.textBox_Timer.TabIndex = 11;
             this.textBox_Timer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxCounts
             // 
             this.textBoxCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxCounts.Location = new System.Drawing.Point(84, 249);
+            this.textBoxCounts.Location = new System.Drawing.Point(118, 295);
             this.textBoxCounts.Name = "textBoxCounts";
             this.textBoxCounts.ReadOnly = true;
-            this.textBoxCounts.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCounts.Size = new System.Drawing.Size(140, 23);
             this.textBoxCounts.TabIndex = 12;
             this.textBoxCounts.Text = "0 / 0";
             this.textBoxCounts.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -579,9 +635,9 @@ namespace NS_Backup
             // 
             this.checkHibernate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkHibernate.AutoSize = true;
-            this.checkHibernate.Location = new System.Drawing.Point(557, 242);
+            this.checkHibernate.Location = new System.Drawing.Point(500, 287);
             this.checkHibernate.Name = "checkHibernate";
-            this.checkHibernate.Size = new System.Drawing.Size(72, 17);
+            this.checkHibernate.Size = new System.Drawing.Size(92, 21);
             this.checkHibernate.TabIndex = 13;
             this.checkHibernate.Text = "Hibernate";
             this.checkHibernate.UseVisualStyleBackColor = true;
@@ -590,75 +646,17 @@ namespace NS_Backup
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(629, 253);
+            this.label1.Location = new System.Drawing.Point(592, 300);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 14;
             this.label1.Text = "when ready";
-            // 
-            // comboDest
-            // 
-            this.comboDest.AllowDrop = true;
-            this.comboDest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboDest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboDest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.comboDest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboDest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.comboDest.Location = new System.Drawing.Point(16, 53);
-            this.comboDest.MaxDropDownItems = 20;
-            this.comboDest.Name = "comboDest";
-            this.comboDest.ReadOnly = false;
-            this.comboDest.Size = new System.Drawing.Size(659, 21);
-            this.comboDest.Sorted = true;
-            this.comboDest.TabIndex = 2;
-            this.comboDest.Text = "Enter destination folder";
-            // 
-            // listViewFiles
-            // 
-            this.listViewFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewFiles.CurrDir = null;
-            this.listViewFiles.CurrExt = "*.*";
-            this.listViewFiles.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewFiles.FullRowSelect = true;
-            this.listViewFiles.HideSelection = false;
-            this.listViewFiles.KindOfTime = NS_UserList.KIND_OF_TIME.KD_Write;
-            this.listViewFiles.Location = new System.Drawing.Point(16, 75);
-            this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(659, 114);
-            this.listViewFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listViewFiles.TabIndex = 6;
-            this.listViewFiles.UseCompatibleStateImageBehavior = false;
-            this.listViewFiles.View = System.Windows.Forms.View.Details;
-            this.listViewFiles.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewFiles_ItemSelectionChanged);
-            this.listViewFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewFiles_MouseDoubleClick);
-            // 
-            // comboSrc
-            // 
-            this.comboSrc.AllowDrop = true;
-            this.comboSrc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboSrc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboSrc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.comboSrc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboSrc.Location = new System.Drawing.Point(16, 48);
-            this.comboSrc.MaxDropDownItems = 20;
-            this.comboSrc.Name = "comboSrc";
-            this.comboSrc.ReadOnly = false;
-            this.comboSrc.Size = new System.Drawing.Size(659, 21);
-            this.comboSrc.Sorted = true;
-            this.comboSrc.TabIndex = 1;
-            this.comboSrc.Text = "Enter source folder";
-            this.comboSrc.SelectedIndexChanged += new System.EventHandler(this.comboSrc_SelectedIndexChanged);
-            this.comboSrc.TextUpdate += new System.EventHandler(this.comboSrc_TextUpdate);
             // 
             // Form
             // 
             this.AllowDrop = true;
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(722, 492);
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 16);
+            this.ClientSize = new System.Drawing.Size(722, 595);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkHibernate);
             this.Controls.Add(this.textBoxCounts);
@@ -676,7 +674,7 @@ namespace NS_Backup
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu;
-            this.MinimumSize = new System.Drawing.Size(527, 522);
+            this.MinimumSize = new System.Drawing.Size(738, 642);
             this.Name = "Form";
             this.Text = "TreeCopy";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.Form_Closing);
@@ -1064,7 +1062,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       24.12.2009
-        LAST CHANGE:   10.11.2014
+        LAST CHANGE:   02.11.2016
         ***************************************************************************/
         private FavDataSet GiveCurrProps()
         {
@@ -1087,7 +1085,7 @@ namespace NS_Backup
                 ds.sDst           = comboDest.Text;
                 ds.sDstDrive      = comboBoxDrives.Text; 
                 ds.sSrcDrive      = comboSrcDrv.Text;
-                ds.tSelected      = m_Selected;
+                ds.LoadSelected( m_Selected );
             
                 return ds;
             }
@@ -1477,7 +1475,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       11.03.2006
-        LAST CHANGE:   27.02.2015
+        LAST CHANGE:   02.11.2016
         ***************************************************************************/
         public void menuItemFavSave_Click(object sender, System.EventArgs e)
         {
@@ -1496,7 +1494,7 @@ namespace NS_Backup
 
             ds.sDstDescr     = "";
             ds.sSrcDescr     = "";
-            ds.tSelected     = m_Selected;
+            ds.LoadSelected( m_Selected );
 
             m_Favs.Save(ds);
         }
@@ -1790,11 +1788,15 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       24.12.2009
-        LAST CHANGE:   10.10.2016
+        LAST CHANGE:   02.11.2016
         ***************************************************************************/
         public void EnterSelected( List<string> aSelected )
         {
-            m_Selected = aSelected;
+            if (m_Selected != aSelected)
+            {
+                m_Selected.Clear();
+                m_Selected.AddRange( aSelected );
+            }
             m_bEnteringSelection = true;
 
             foreach( ListViewItem it in listViewFiles.Items )
