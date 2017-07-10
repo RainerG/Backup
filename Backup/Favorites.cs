@@ -13,44 +13,29 @@ namespace NS_Backup
 {
     public delegate FavDataSet dl_GetCurrProperties( );
 
-    /***************************************************************************
-    SPECIFICATION: 
-    CREATED:       ?
-    LAST CHANGE:   11/2/2016
-    ***************************************************************************/
+
     public class FavDataSet
     {
+        public FavDataSet()
+        {
+            tSelected = new List<string>();
+            sSrc      = "";
+            sDst      = "";
+            sSrcDescr = "";
+            sDstDescr = "";
+        }
+
         public bool   bDrive;
         public bool   bEvenNewer;
         public bool   bCopyAll;
-        public bool   bIgnoreR;     // added 04.05.2006
-        public bool   bRegardAge;   // "
+        public bool   bIgnoreR;   // added 04.05.2006
+        public bool   bRegardAge; // "
         public bool   bFoldersOnly; // added 22.03.2007
         public string sSrc;
         public string sDst;
         public string sSrcDescr;  // added 21.12.2009
-        public string sDstDescr;  // " 
-        public string sDstDrive;  // added 10.11.2014
-        public string sSrcDrive;  // added 09.12.2014
+        public string sDstDescr;  // "  
         public List<string> tSelected;
-
-        public FavDataSet()
-        {
-            tSelected   = new List<string>();
-            sSrc        = "";
-            sDst        = "";
-            sSrcDescr   = "";
-            sDstDescr   = "";
-            sDstDrive   = "";
-            sSrcDrive   = "";
-            bDrive      = false;
-        }
-
-        public void LoadSelected( List<string> a_Selctd )
-        {
-            tSelected.Clear();
-            tSelected.AddRange( a_Selctd );
-        }
     }
 
 	/// <summary>
@@ -176,7 +161,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       22.03.2006
-        LAST CHANGE:   10.10.2016
+        LAST CHANGE:   22.03.2007
         ***************************************************************************/
         public void Serialize(ref AppSettings iConfig)
         {
@@ -186,10 +171,10 @@ namespace NS_Backup
 
                 int cnt = (int)iConfig.Deserialize();
 
+                FavDataSet ds;
+
                 for( int i = 0; i < cnt; i++ )
                 {
-                    FavDataSet ds = new FavDataSet();
-
                     ds.sSrc         = (String)iConfig.Deserialize();
                     ds.sDst         = (String)iConfig.Deserialize();
                     ds.bDrive       = (bool)iConfig.Deserialize();
@@ -198,12 +183,19 @@ namespace NS_Backup
                     ds.bIgnoreR     = (bool)iConfig.Deserialize();
                     ds.bRegardAge   = (bool)iConfig.Deserialize();
                     ds.bFoldersOnly = (bool)iConfig.Deserialize();
-                    ds.sSrcDescr    = iConfig.Deserialize<String>();
-                    ds.sDstDescr    = iConfig.Deserialize<String>();
-                    ds.tSelected    = (List<string>)iConfig.Deserialize();
-                    ds.sDstDrive    = iConfig.Deserialize<string>();
-                    ds.sSrcDrive    = iConfig.Deserialize<string>();
 
+                    if( iConfig.DbVersion > 9 )
+                    {
+                        ds.sSrcDescr = (String)iConfig.Deserialize();
+                        ds.sDstDescr = (String)iConfig.Deserialize();
+                        ds.tSelected = (List<string>)iConfig.Deserialize();
+                    }
+                    else
+                    {
+                        ds.sSrcDescr = "";
+                        ds.sDstDescr = "";
+                        ds.tSelected = new List<string>();
+                    }
                     m_DataList.Add( ds );
                 }
 
@@ -228,8 +220,6 @@ namespace NS_Backup
                     iConfig.Serialize( ds.sSrcDescr );
                     iConfig.Serialize( ds.sDstDescr );
                     iConfig.Serialize( ds.tSelected );
-                    iConfig.Serialize( ds.sDstDrive );    
-                    iConfig.Serialize( ds.sSrcDrive );    
                 }
             }
 
@@ -429,7 +419,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       22.03.2006
-        LAST CHANGE:   17.01.2015
+        LAST CHANGE:   22.03.2007
         ***************************************************************************/
         void OnSelect(Object sender, EventArgs e)
         {
@@ -439,39 +429,18 @@ namespace NS_Backup
             int ind = pm.Index - m_iStartMenuIdx;
 
             FavDataSet ds = (FavDataSet)m_DataList[ind];
-
+            m_Main.comboSrc.Text               = ds.sSrc;
             m_Main.checkBoxDrives    .Checked  = ds.bDrive;
             m_Main.menuItemEvenNewer .Checked  = ds.bEvenNewer;
             m_Main.menuItemCopyAll   .Checked  = ds.bCopyAll;
             m_Main.menuItemIgnoreR   .Checked  = ds.bIgnoreR;
             m_Main.checkBoxFolderOnly.Checked  = ds.bFoldersOnly;
-            m_Main.comboDest.Text              = ds.sDst;
-            m_Main.comboSrc.Text               = ds.sSrc;
+            m_Main.SetRegardFileage(ds.bRegardAge);
 
-            string[] pth = m_Main.comboSrc.CorrectPathByVolName(ds.sSrcDrive);
+            if (ds.bDrive)   m_Main.comboBoxDrives.Text = ds.sDst;
+            else             m_Main.comboDest.Text      = ds.sDst;
 
-            string drvn = Utils.GetDriveByVolName(ds.sDstDrive);
-            if ( drvn != null )
-            {
-                string drvo = Utils.GetDriveLetter   (ds.sDstDrive);
-
-                m_Main.comboBoxDrives.Text = ds.sDstDrive.Replace(drvo,drvn);
-            }
-            else
-            {
-                m_Main.comboBoxDrives.Text = ds.sDstDrive;
-            }
-            
-            // exchange drive letters
-            if( pth != null && pth.Length > 1 )
-            {
-                if (ds.sSrc.Contains(pth[0])) ds.sSrc = ds.sSrc.Replace(pth[0],pth[1]);
-            }
-
-            m_Main.SyncSrcDriveBox(ds.sSrc);
-
-            m_Main.SetRegardFileage( ds.bRegardAge );
-            m_Main.EnterSelected   ( ds.tSelected  );
+            m_Main.EnterSelected( ds.tSelected );
         }
 
 
@@ -499,10 +468,8 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       06.05.2006
-        LAST CHANGE:   02.09.2015
+        LAST CHANGE:   24.12.2009
         ***************************************************************************/
-        const string REPL_FORMAT = "{0,-40} => {1,-40}\n";
-
         void OnReplace(Object sender, EventArgs e)
         {
             MenuItem mi = (MenuItem)sender;
@@ -512,31 +479,20 @@ namespace NS_Backup
             int ind = pm.Index - m_iStartMenuIdx;
             FavDataSet mbr = m_DataList[ind];
 
-            FavDataSet ds;
+            if (DialogResult.Yes != MessageBox.Show("Really replace '" + mbr.sSrc + " - " + mbr.sDst + "' ?", "Warning" , MessageBoxButtons.YesNo) ) return;
 
+            FavDataSet ds;
             if( null != m_eCurrProps )
             {
                 ds = m_eCurrProps();
-            }
-            else
-            {
-                MessageBox.Show("No properties assigned");
-                return;
-            }
 
-            if (DialogResult.Yes != MessageBox.Show("Really replace:\n\n" + 
-                                                        string.Format(REPL_FORMAT, mbr.sSrcDescr, ds.sSrcDrive ) +
-                                                        string.Format(REPL_FORMAT, mbr.sSrc     , ds.sSrc      ) +
-                                                        string.Format(REPL_FORMAT, mbr.sDstDrive, ds.sDstDrive ) +
-                                                        string.Format(REPL_FORMAT, mbr.sDst     , ds.sDst      ) +
-                                                        "\n?", "Warning" , MessageBoxButtons.YesNo) ) return;
-            ds.sDstDescr = mbr.sDstDescr;
-            ds.sSrcDescr = mbr.sSrcDescr;
+                ds.sDstDescr = mbr.sDstDescr;
+                ds.sSrcDescr = mbr.sSrcDescr;
 
-            m_DataList[ind] = ds;
-            UpdateMenu( ref m_Menu );
+                m_DataList[ind] = ds;
+                UpdateMenu( ref m_Menu );
+            }
         }
-
 
         /***************************************************************************
         SPECIFICATION: 
@@ -552,7 +508,10 @@ namespace NS_Backup
             int ind = pm.Index - m_iStartMenuIdx;
             FavDataSet mbr = m_DataList[ind];
 
-            m_DescrEdit.LoadData(mbr);
+            m_DescrEdit.textBoxDstDescr.Text = mbr.sDstDescr;
+            m_DescrEdit.textBoxDstPath .Text = mbr.sDst;
+            m_DescrEdit.textBoxSrcDescr.Text = mbr.sSrcDescr;
+            m_DescrEdit.textBoxSrcPath .Text = mbr.sSrc;
 
             if (m_DescrEdit.ShowDialog() == DialogResult.OK)
             {
@@ -560,7 +519,10 @@ namespace NS_Backup
 
                 s = mbr;
 
-                s = m_DescrEdit.ReadData(mbr);
+                s.sDstDescr = m_DescrEdit.textBoxDstDescr.Text;
+                s.sDst = m_DescrEdit.textBoxDstPath.Text;
+                s.sSrcDescr = m_DescrEdit.textBoxSrcDescr.Text;
+                s.sSrc = m_DescrEdit.textBoxSrcPath.Text;
 
                 m_DataList[ind] = s;
 

@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_40142AA4CA234106B19657DF63EA2009"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5C8E5C6E50DC4FB8B9833CE4A6A2C097"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +23,12 @@
         {
         "MsmKey" = "8:_99D7006DF021EC515396F3FE33DC78AB"
         "OwnerKey" = "8:_DDE9E726D0014D72BEA515E82E1122A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D27B7EE79FC74E42A08AFA8AD8E0BC3F"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -131,7 +131,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                          "
+                "FrameworkVersion" = "8:2.0.50727                                             "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 "SupportedRuntimes" = "8:1.1.4322"
@@ -140,26 +140,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_40142AA4CA234106B19657DF63EA2009"
-            {
-            "SourcePath" = "8:..\\Exts.txt"
-            "TargetName" = "8:Exts.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_2122695035214EFDAFA94491D25B5222"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5C8E5C6E50DC4FB8B9833CE4A6A2C097"
             {
             "SourcePath" = "8:..\\App.ico"
@@ -187,11 +167,6 @@
             "AssemblyAsmDisplayName" = "8:Shared, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_99D7006DF021EC515396F3FE33DC78AB"
-                    {
-                    "Name" = "8:Shared.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Shared.dll"
             "TargetName" = "8:"
@@ -209,6 +184,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D27B7EE79FC74E42A08AFA8AD8E0BC3F"
+            {
+            "SourcePath" = "8:..\\Exts.txt"
+            "TargetName" = "8:Exts.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_2122695035214EFDAFA94491D25B5222"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -290,7 +285,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TreeCopy"
         "ProductCode" = "8:{751BDD89-E793-436D-976B-78D7E9282F89}"
-        "PackageCode" = "8:{3A0C213F-30CA-4479-9337-CEC59F84F8C2}"
+        "PackageCode" = "8:{C473B09B-0E08-4825-B04E-5F6E3BF18CD2}"
         "UpgradeCode" = "8:{BC41D0E1-7788-46B1-98A9-BB5683D04654}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
