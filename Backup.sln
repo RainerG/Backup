@@ -1,11 +1,8 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backup", "Backup.csproj", "{DD64551A-0F42-4606-82C3-0A98B502E3E2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3C1472AA-BD69-40E3-B226-0B172275FAB5} = {3C1472AA-BD69-40E3-B226-0B172275FAB5}
-	EndProjectSection
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{591A7D6D-E047-4832-AE99-8420529F5DF6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3C1472AA-BD69-40E3-B226-0B172275FAB5} = {3C1472AA-BD69-40E3-B226-0B172275FAB5}
 	EndProjectSection
@@ -57,33 +54,6 @@ Global
 		{DD64551A-0F42-4606-82C3-0A98B502E3E2}.Release_noNI|Any CPU.Build.0 = Release|Any CPU
 		{DD64551A-0F42-4606-82C3-0A98B502E3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD64551A-0F42-4606-82C3-0A98B502E3E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Auto|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Auto|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Batch|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Batch|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Output|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug Output|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug PC Version|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug PC Version|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug XML|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug XML|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug_noNI|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug_noNI|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug_USBCAN|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug_USBCAN|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Debug|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.DebugAuto|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.DebugAuto|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.DebugVCAN|Any CPU.ActiveCfg = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.DebugVCAN|Any CPU.Build.0 = Debug
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.None|Any CPU.ActiveCfg = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.None|Any CPU.Build.0 = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release PC Version|Any CPU.ActiveCfg = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release PC Version|Any CPU.Build.0 = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release_noNI|Any CPU.ActiveCfg = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release_noNI|Any CPU.Build.0 = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release|Any CPU.ActiveCfg = Release
-		{591A7D6D-E047-4832-AE99-8420529F5DF6}.Release|Any CPU.Build.0 = Release
 		{3C1472AA-BD69-40E3-B226-0B172275FAB5}.Debug Auto|Any CPU.ActiveCfg = Debug Auto|Any CPU
 		{3C1472AA-BD69-40E3-B226-0B172275FAB5}.Debug Auto|Any CPU.Build.0 = Debug Auto|Any CPU
 		{3C1472AA-BD69-40E3-B226-0B172275FAB5}.Debug Batch|Any CPU.ActiveCfg = Debug Batch|Any CPU
@@ -115,5 +85,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D79DF69A-02BE-4DB1-8A5E-13EC3713370F}
 	EndGlobalSection
 EndGlobal
