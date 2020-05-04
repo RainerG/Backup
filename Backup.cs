@@ -218,12 +218,13 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       ?
-        LAST CHANGE:   24.04.2009  
+        LAST CHANGE:   10.07.2017  
         ***************************************************************************/
         private void BuThread()
         {
             m_aProt.Clear();
             m_aProt.Capacity = 50000000;
+            bool showed = false;
             m_eShowFile("counting files ...",false);
 
             foreach ( string path in m_tSrcPath )
@@ -240,7 +241,11 @@ namespace NS_Backup
 
             foreach ( string path in m_tSrcPath )
             {
-                m_eShowFile("copying ...",false);
+                if (! showed) 
+                {
+                    m_eShowFile("copying ...",false);
+                    showed = true;
+                }
                 m_bRet = TraverseTree( new PathType( path, Forced( path )) );
             }
 
