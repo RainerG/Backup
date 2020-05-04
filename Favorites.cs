@@ -501,7 +501,7 @@ namespace NS_Backup
         CREATED:       06.05.2006
         LAST CHANGE:   02.09.2015
         ***************************************************************************/
-        const string REPL_FORMAT = "{0,-40} => {1,-40}\n";
+        const string REPL_FORMAT = "{0,-30} <= {1,30}\n";
 
         void OnReplace(Object sender, EventArgs e)
         {

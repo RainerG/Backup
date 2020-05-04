@@ -5,12 +5,9 @@
 !ISP_Files
 !obj
 !REN_Files
-!SandBox
 !Sandboxes
 !test.txt
 #.git
-#PeakCan
-#VectorCan
 *.7z
 *.abc
 *.apx
@@ -82,7 +79,6 @@
 *.ldf
 *.lnk
 *.lnt
-*.log
 *.max
 *.mcd
 *.mdb
@@ -106,7 +102,6 @@
 *.pl
 *.plt
 *.png
-*.ppt
 *.ppt*
 *.prj
 *.pst
@@ -154,6 +149,8 @@
 *.vsk
 *.vsmacros
 *.vsp*
+*.vss
+*.vssettings
 *.webinfo
 *.wmf
 *.wpj
@@ -167,17 +164,12 @@ colorfilters.
 GenerateIPCMessages.exe
 Gpib-32.obj
 hosts.
-LibUsbDotNet.dll
 luca.dll
 luca.lib
 makefile.
 NrpZxxCalc.*
 Nrt_Tra.*
-PCAN*.*
 pdrem.lib
 preferences.
-vxlapi_NET.dll
 Z21Default.*
-
-
 

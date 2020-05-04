@@ -41,8 +41,8 @@ namespace NS_Backup
         public event dl_InscribeStartBtn m_eInscribeStartButton;
         public event dl_ShowActivity     m_eShowActivity;
 
-        private const int DB_VERSION     = 152;  // 05.06.2016
-        private const string RELEASE     = "Release: 1.38 RC1";
+        private const int DB_VERSION     = 90;  // 05.06.2016
+        private const string RELEASE     = "Release: 1.37";
         private const string INI_FNAME   = "backup.ini";
 
         private AppSettings             m_Config;
