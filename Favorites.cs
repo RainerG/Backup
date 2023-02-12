@@ -17,7 +17,7 @@ namespace NS_Backup
     /***************************************************************************
     SPECIFICATION: 
     CREATED:       ?
-    LAST CHANGE:   11/2/2016
+    LAST CHANGE:   12.02.2023
     ***************************************************************************/
     public class FavDataSet
     {
@@ -33,6 +33,7 @@ namespace NS_Backup
         public string sDstDescr;  // " 
         public string sDstDrive;  // added 10.11.2014
         public string sSrcDrive;  // added 09.12.2014
+        public string sFileMsks;  // 12.02.2023
         public List<string> tSelected;
 
         public FavDataSet()
@@ -44,6 +45,7 @@ namespace NS_Backup
             sDstDescr   = "";
             sDstDrive   = "";
             sSrcDrive   = "";
+            sFileMsks   = "";
             bDrive      = false;
         }
 
@@ -63,7 +65,7 @@ namespace NS_Backup
 
         private List<FavDataSet>     m_DataList;
         private MenuItem             m_Menu;
-        private Form                 m_Main;
+        private MainDlg                 m_Main;
         private Font                 m_Font;
         private bool                 m_bAscending;
         private int                  m_iStartMenuIdx;
@@ -75,7 +77,7 @@ namespace NS_Backup
         CREATED:       14.03.2006
         LAST CHANGE:   22.12.2009
         ***************************************************************************/
-        public Favorites(ref MenuItem iMenuItem, Form iMain)
+        public Favorites(ref MenuItem iMenuItem, MainDlg iMain)
 		{
             m_DataList  = new List<FavDataSet>();
             m_ReplDL    = new ReplaceDL();
@@ -92,7 +94,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: Comparer object needed for sorting MenuItems
         CREATED:       05.05.2006
-        LAST CHANGE:   05.05.2006
+        LAST CHANGE:   17.05.2021
         ***************************************************************************/
         private class MenuItemComparer : IComparer<FavDataSet>
         {
@@ -112,19 +114,19 @@ namespace NS_Backup
 
                 if (m_bLeft)
                 {
-                    if (mi1.sSrcDescr == "")  s1 = mi1.sSrc;
-                    else                      s1 = mi1.sSrcDescr;
+                    if (mi1.sSrcDescr == "")  s1 = mi1.sSrc      + mi1.sDst     ;
+                    else                      s1 = mi1.sSrcDescr + mi1.sDstDescr;
 
-                    if( mi2.sSrcDescr == "" ) s2 = mi2.sSrc;
-                    else                      s2 = mi2.sSrcDescr;
+                    if( mi2.sSrcDescr == "" ) s2 = mi2.sSrc      + mi2.sDst     ;
+                    else                      s2 = mi2.sSrcDescr + mi2.sDstDescr;
                 }
                 else
                 {
-                    if( mi1.sDstDescr == "" ) s1 = mi1.sDst;
-                    else                      s1 = mi1.sDstDescr;
+                    if( mi1.sDstDescr == "" ) s1 = mi1.sDst      + mi1.sSrc     ;
+                    else                      s1 = mi1.sDstDescr + mi1.sSrcDescr;
 
-                    if( mi2.sDstDescr == "" ) s2 = mi2.sDst;
-                    else                      s2 = mi2.sDstDescr;
+                    if( mi2.sDstDescr == "" ) s2 = mi2.sDst      + mi2.sSrc     ;
+                    else                      s2 = mi2.sDstDescr + mi2.sSrcDescr;
                 }
 
                 if (m_bAscendSort) return s1.CompareTo(s2);
@@ -204,7 +206,7 @@ namespace NS_Backup
                     ds.tSelected    = (List<string>)iConfig.Deserialize();
                     ds.sDstDrive    = iConfig.Deserialize<string>();
                     ds.sSrcDrive    = iConfig.Deserialize<string>();
-
+                    if ( iConfig.DbVersion > 310 ) ds.sFileMsks = iConfig.Deserialize<string>();
                     m_DataList.Add( ds );
                 }
 
@@ -231,6 +233,7 @@ namespace NS_Backup
                     iConfig.Serialize( ds.tSelected );
                     iConfig.Serialize( ds.sDstDrive );    
                     iConfig.Serialize( ds.sSrcDrive );    
+                    iConfig.Serialize( ds.sFileMsks );
                 }
             }
 
@@ -430,7 +433,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       22.03.2006
-        LAST CHANGE:   17.01.2015
+        LAST CHANGE:   12.02.2023
         ***************************************************************************/
         void OnSelect(Object sender, EventArgs e)
         {
@@ -447,7 +450,7 @@ namespace NS_Backup
             m_Main.menuItemIgnoreR   .Checked  = ds.bIgnoreR;
             m_Main.checkBoxFolderOnly.Checked  = ds.bFoldersOnly;
             m_Main.comboDest.Text              = ds.sDst;
-            m_Main.comboSrc.Text               = ds.sSrc;
+            m_Main.comboSrc .Text              = ds.sSrc;
 
             string[] pth = m_Main.comboSrc.CorrectPathByVolName(ds.sSrcDrive);
 
@@ -473,13 +476,14 @@ namespace NS_Backup
 
             m_Main.SetRegardFileage( ds.bRegardAge );
             m_Main.EnterSelected   ( ds.tSelected  );
+            if ( ds.sFileMsks != "") m_Main.FileExts = ds.sFileMsks;  
         }
 
 
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       23.03.2006
-        LAST CHANGE:   28.03.2006
+        LAST CHANGE:   06.05.2021
         ***************************************************************************/
         void OnDelete(Object sender, EventArgs e)
         {
@@ -500,7 +504,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       06.05.2006
-        LAST CHANGE:   02.09.2015
+        LAST CHANGE:   12.02.2023
         ***************************************************************************/
         const string REPL_FORMAT = "{0,-40} => {1,-40}\n";
 
@@ -525,11 +529,12 @@ namespace NS_Backup
                 return;
             }
 
-            if (DialogResult.Yes != MessageBox.Show("Really replace:\n\n" + 
+            if (DialogResult.OK != MessgeBox.Show("Really replace:\n\n" + 
                                                         string.Format(REPL_FORMAT, mbr.sSrcDescr, ds.sSrcDrive ) +
                                                         string.Format(REPL_FORMAT, mbr.sSrc     , ds.sSrc      ) +
                                                         string.Format(REPL_FORMAT, mbr.sDstDrive, ds.sDstDrive ) +
                                                         string.Format(REPL_FORMAT, mbr.sDst     , ds.sDst      ) +
+                                                        string.Format(REPL_FORMAT, mbr.sFileMsks, ds.sFileMsks ) +
                                                         "\n?", "Warning" , MessageBoxButtons.YesNo) ) return;
             ds.sDstDescr = mbr.sDstDescr;
             ds.sSrcDescr = mbr.sSrcDescr;

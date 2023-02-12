@@ -13,4 +13,4 @@ d:\data\projects\CS\Backup\bin\Release\Backup.exe.config
 D:\data\PROJECT\CS\Backup\obj\Release\Backup.csprojAssemblyReference.cache
 D:\data\PROJECT\CS\Backup\obj\Release\Backup.csproj.CoreCompileInputs.cache
 D:\data\PROJECT\CS\Backup\obj\Release\Backup.csproj.CopyComplete
-D:\data\PROJECT\CS\Backup\bin\Release\BouncyCastle.Crypto.dll
+D:\data\PROJECT\CS\Backup\bin\Release\ICSharpCode.SharpZipLib.dll

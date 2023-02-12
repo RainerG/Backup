@@ -218,7 +218,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       ?
-        LAST CHANGE:   10.07.2017  
+        LAST CHANGE:   04.04.2022  
         ***************************************************************************/
         private void BuThread()
         {
@@ -247,6 +247,7 @@ namespace NS_Backup
                     showed = true;
                 }
                 m_bRet = TraverseTree( new PathType( path, Forced( path )) );
+                if (! m_bRet) break;
             }
 
             m_eShowTime( m_tTimer.Elapsed );
@@ -332,9 +333,9 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       26.06.2008
-        LAST CHANGE:   15.07.2008
+        LAST CHANGE:   18.01.2022
         ***************************************************************************/
-        const int BLOCK_SIZE = 0x2FFFF;
+        const long BLOCK_SIZE = 0x2FFFF;
 
         private void CopyFileProgress( String sSrcFile, String sDstFile )
         {
@@ -349,14 +350,14 @@ namespace NS_Backup
 
             for ( int i = 0; i < loops; i++ )
             {
-                rd.Read ( buf, 0, BLOCK_SIZE );
+                rd.Read ( buf, 0, (int)BLOCK_SIZE );
                 m_eShowFBar( (int)(i * 100 / loops) );
                 m_eShowTime( m_tTimer.Elapsed );
-                wr.Write( buf, 0, BLOCK_SIZE );
+                wr.Write( buf, 0, (int)BLOCK_SIZE );
             }
 
-            rd.Read  ( buf, 0, (int)len % BLOCK_SIZE );
-            wr.Write ( buf, 0, (int)len % BLOCK_SIZE );
+            rd.Read  ( buf, 0, (int)(len % BLOCK_SIZE) );
+            wr.Write ( buf, 0, (int)(len % BLOCK_SIZE) );
             m_eShowFBar ( 100 );
 
             rd.Close();

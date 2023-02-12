@@ -106,12 +106,12 @@ namespace NS_FavDescr
         {
             NS_Backup.FavDataSet ret = data;
 
-            ret.sDstDescr   =    textBoxDstDescr.Text;
-            ret.sDst        =    textBoxDstPath .Text;
-            ret.sSrcDescr   =    textBoxSrcDescr.Text;
-            ret.sSrc        =    textBoxSrcPath .Text;
-            ret.sDstDrive   =    textBoxDstDrive.Text;
-            ret.sSrcDrive   =    textBoxSrcDrv  .Text;
+            ret.sDstDescr = textBoxDstDescr.Text;
+            ret.sDst      = textBoxDstPath .Text;
+            ret.sSrcDescr = textBoxSrcDescr.Text;
+            ret.sSrc      = textBoxSrcPath .Text;
+            ret.sDstDrive = textBoxDstDrive.Text;
+            ret.sSrcDrive = textBoxSrcDrv  .Text;
 
             return ret;
         }
