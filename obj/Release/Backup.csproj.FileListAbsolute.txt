@@ -2,7 +2,6 @@ D:\data\PROJECT\CS\Backup\bin\Release\Backup.exe.config
 D:\data\PROJECT\CS\Backup\bin\Release\Backup.exe
 D:\data\PROJECT\CS\Backup\bin\Release\Shared.dll
 D:\data\PROJECT\CS\Backup\obj\Release\NS_FavDescr.FavDescriptionEditor.resources
-D:\data\PROJECT\CS\Backup\obj\Release\NS_Backup.Form.resources
 D:\data\PROJECT\CS\Backup\obj\Release\NS_Backup.FormFmEditor.resources
 D:\data\PROJECT\CS\Backup\obj\Release\NS_Backup.PreferencesForm.resources
 D:\data\PROJECT\CS\Backup\obj\Release\NS_Backup.ProtocolView.resources
@@ -14,3 +13,4 @@ D:\data\PROJECT\CS\Backup\obj\Release\Backup.csprojAssemblyReference.cache
 D:\data\PROJECT\CS\Backup\obj\Release\Backup.csproj.CoreCompileInputs.cache
 D:\data\PROJECT\CS\Backup\obj\Release\Backup.csproj.CopyComplete
 D:\data\PROJECT\CS\Backup\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\data\PROJECT\CS\Backup\obj\Release\NS_Backup.MainDlg.resources

@@ -49,7 +49,7 @@ namespace NS_Backup
         const int MIN_HEIGHT = 454;
         const int MIN_WIDTH  = 455;
 
-        public event dl_ShowFilename     m_eShowFilename;
+        //public event dl_ShowFilename     m_eShowFilename;
         public event dl_ChangeCursor     m_eChangeCursor;
         public event dl_InscribeStartBtn m_eInscribeStartButton;
         public event dl_ShowActivity     m_eShowActivity;
@@ -1159,7 +1159,7 @@ namespace NS_Backup
 
             m_Pref.ClosePrtView();
 
-            m_eShowFilename         -= new dl_ShowFilename(this.ShowFile);
+            //m_eShowFilename         -= new dl_ShowFilename(this.ShowFile);
             m_eChangeCursor         -= new dl_ChangeCursor(this.ChangeCursor);
             m_eInscribeStartButton  -= new dl_InscribeStartBtn(this.InscrStartBtn);
      
@@ -1239,19 +1239,19 @@ namespace NS_Backup
         ***************************************************************************/
         private void Form_Load(object sender, System.EventArgs e)
         {
-            m_eShowFilename         += new dl_ShowFilename(this.ShowFile);
+            //m_eShowFilename         += new dl_ShowFilename(this.ShowFile);
             m_eChangeCursor         += new dl_ChangeCursor(this.ChangeCursor);
             m_eInscribeStartButton  += new dl_InscribeStartBtn(this.InscrStartBtn);
             m_eShowActivity         += new dl_ShowActivity(this.ShwActivity);
 
             m_Backup = new Backup();
 
-            m_Backup.m_eBuReady  += new dl_BuReady( this.ShowReady );
-            m_Backup.m_eShowDir  += new dl_ShowDir( this.ShowDir );
-            m_Backup.m_eShowFile += new dl_ShowFile( this.ShowFile );
+            m_Backup.m_eBuReady  += new dl_BuReady   ( this.ShowReady );
+            m_Backup.m_eShowDir  += new dl_ShowDir   ( this.ShowDir );
+            m_Backup.m_eShowFile += new dl_ShowFile  ( this.ShowFile );
             m_Backup.m_eShowABar += new dl_ShowAllBar( this.ShowAllBar );
             m_Backup.m_eShowFBar += new dl_ShowFilBar( this.ShowFilBar );
-            m_Backup.m_eShowTime += new dl_ShowTime( this.ShowTimeDif );
+            m_Backup.m_eShowTime += new dl_ShowTime  ( this.ShowTimeDif );
             m_Favs.m_eCurrProps  += new dl_GetCurrProperties( this.GiveCurrProps );
 
             ReadDrives(false);

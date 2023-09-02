@@ -65,7 +65,7 @@ namespace NS_Backup
 
         private List<FavDataSet>     m_DataList;
         private MenuItem             m_Menu;
-        private MainDlg                 m_Main;
+        private MainDlg              m_Main;
         private Font                 m_Font;
         private bool                 m_bAscending;
         private int                  m_iStartMenuIdx;
@@ -504,9 +504,9 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       06.05.2006
-        LAST CHANGE:   12.02.2023
+        LAST CHANGE:   17.02.2023
         ***************************************************************************/
-        const string REPL_FORMAT = "{0,-40} => {1,-40}\n";
+        const string REPL_FORMAT = "{0,-60} => {1}\n";
 
         void OnReplace(Object sender, EventArgs e)
         {
