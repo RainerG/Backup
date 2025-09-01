@@ -1,7 +1,6 @@
 !_backup_
 !~*.*
 !GD_Files
-!isp_files
 !ISP_Files
 !obj
 !REN_Files
@@ -112,7 +111,6 @@
 *.plt
 *.pm
 *.png
-*.ppt
 *.ppt*
 *.printerExport
 *.prj
@@ -133,6 +131,7 @@
 *.sch
 *.scr
 *.settings
+*.sh
 *.sln
 *.snippet
 *.spm
@@ -194,6 +193,4 @@ preferences.
 Vector.Xl*.*
 vxlapi*.*
 Z21Default.*
-
-
 

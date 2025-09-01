@@ -496,7 +496,7 @@ namespace NS_Backup
 
             if (DialogResult.Yes == MessageBox.Show("Really Delete '" + mbr.sSrc + " - " + mbr.sDst + "' ?", "Warning" , MessageBoxButtons.YesNo) ) 
             {
-                m_DataList.RemoveAt(ind);
+                m_DataList  .RemoveAt(ind);
                 mm.MenuItems.Remove(pm);
             }
         }

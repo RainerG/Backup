@@ -2,9 +2,11 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using NS_Utilities;
+using System.Data;
 
 namespace NS_Backup
 {
@@ -110,7 +112,7 @@ namespace NS_Backup
             this.buttonSave.Size = new System.Drawing.Size(56, 23);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Sa&ve";
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler( this.buttonSave_Click );
             // 
             // FormFmEditor
             // 
@@ -128,15 +130,46 @@ namespace NS_Backup
         }
 		#endregion
 
+        /***************************** 05.12.2024 **********************************/
         private void buttonSort_Click(object sender, System.EventArgs e)
         {
-            ArrayList al = new ArrayList(textBox.Lines);
+            List<string> al = new List<string>( textBox.Lines );
             al.Sort();
+            DeleteDuplics( ref al ); 
             textBox.Clear();
             foreach(string s in al)
             {
                 if (0 != s.Length)  textBox.AppendText(s + "\r\n");
             } 
+        }
+
+        /***************************************************************************
+        SPECIFICATION: 
+        CREATED:       05.12.2024
+        LAST CHANGE:   05.12.2024
+        ***************************************************************************/
+        private void DeleteDuplics( ref List<string> a_Lst )
+        {
+            List<string> cpy = new List<string>( a_Lst );
+            List<string> dups= new List<string>();
+
+            foreach( string s in a_Lst )
+            {
+                List<string> res = cpy.FindAll( c => c.ToLower().Trim() == s.ToLower().Trim() );
+                if (res.Count > 1)
+                {
+                    cpy.Remove( s );
+                    dups.Add  ( s );
+                }
+            }
+            a_Lst.Clear();
+            a_Lst.AddRange(cpy);
+            if ( dups.Count > 0 )
+            {
+                string msg = "";
+                foreach( string dup in dups ) msg += dup + "\n";
+                MessageBox.Show( "Duplicates discarded:\n" + msg, "Duplicates found !" );
+            }
         }
 
         private void buttonSave_Click(object sender, System.EventArgs e)

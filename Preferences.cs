@@ -364,7 +364,7 @@ namespace NS_Backup
         /***************************************************************************
         SPECIFICATION: 
         CREATED:       30.10.2004
-        LAST CHANGE:   17.01.2016
+        LAST CHANGE:   06.11.2024
         ***************************************************************************/
         public void ShowProtView()
         {
@@ -381,6 +381,7 @@ namespace NS_Backup
 
             m_ProtView.Refresh();
         }
+
 
         private void BtnShowProt_Click(object sender, System.EventArgs e)
         {

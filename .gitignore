@@ -36,4 +36,4 @@ obj/
 #Nuget packages folder
 packages/
 *.dll
-*.exe
+.idea/

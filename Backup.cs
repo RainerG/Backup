@@ -269,7 +269,7 @@ namespace NS_Backup
 
                 m_eBuReady();
             }
-            catch (Exception e)
+            catch (Exception e) 
             {
                 MessageBox.Show(e.Message, "Error in writing protocol file");
             }
@@ -428,12 +428,6 @@ namespace NS_Backup
             }
         }
 
-
-        //private static void CountFiles( string sPath, string sExt )
-        //{
-        //    string[] sFiles = Directory.GetFiles( sPath, sExt );
-        //    m_eIncFileCount( sFiles.Length );
-        //}
 
         /***************************************************************************
         SPECIFICATION: 
