@@ -24,3 +24,8 @@ D:\data\PROJECT\CS\RgTools\Backup\obj\Release\NS_ReplDL.ReplaceDL.resources
 D:\data\PROJECT\CS\RgTools\Backup\obj\Release\Backup.csproj.GenerateResource.cache
 D:\data\PROJECT\CS\RgTools\Backup\obj\Release\Backup.csproj.CoreCompileInputs.cache
 D:\data\PROJECT\CS\RgTools\Backup\obj\Release\Backup.exe
+D:\data\PROJECT\CS\RgTools\Backup\bin\Release\Backup.exe.config
+D:\data\PROJECT\CS\RgTools\Backup\bin\Release\Backup.exe
+D:\data\PROJECT\CS\RgTools\Backup\bin\Release\Shared.dll
+D:\data\PROJECT\CS\RgTools\Backup\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\data\PROJECT\CS\RgTools\Backup\obj\Release\Backup.csproj.CopyComplete
