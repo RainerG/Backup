@@ -36,4 +36,4 @@ obj/
 packages/
 *.dll
 .idea/
-storage.ide*
+*storage.*
